@@ -1,19 +1,11 @@
-name: ❄️ YAML Lint
+name: YAML Lint
 
-on:
-  pull_request:
-    paths:
-      - '**.yaml'
-  workflow_dispatch:
+on: [push]
 
 jobs:
-  build:
+  lintAllTheThings:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Yamllint
-        uses: karancode/yamllint-github-action@v2.1.1
-        with:
-          yamllint_config_filepath: .yamllint
-          yamllint_strict: false
-          yamllint_comment: true
+    - uses: actions/checkout@v1
+    - name: yaml-lint
+      uses: ibiqlik/action-yamllint@v3
