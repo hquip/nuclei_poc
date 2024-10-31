@@ -1,19 +1,20 @@
-id: vmware-horizon
+id: horizon
 info:
-  name: VMware Horizon Login
-  author: dhiyaneshDK
+  name: horizon
+  author: cn-kali-team
+  tags: detect,tech,horizon
   severity: info
-  reference: https://www.exploit-db.com/ghdb/6496
-  tags: panel
-requests:
-  - method: GET
-    path:
-      - '{{BaseURL}}/portal/webclient/index.html'
-    matchers-condition: and
-    matchers:
-      - type: word
-        words:
-          - '<title>VMware Horizon</title>'
-      - type: status
-        status:
-          - 200
+  metadata:
+    product: horizon
+    shodan-query:
+    - title:"opennms web console"
+    vendor: opennms
+    verified: true
+http:
+- method: GET
+  path:
+  - '{{BaseURL}}/'
+  matchers:
+  - type: regex
+    regex:
+    - (?mi)<title[^>]*>opennms web console.*?</title>
