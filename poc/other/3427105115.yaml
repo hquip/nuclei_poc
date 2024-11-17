@@ -1,15 +1,18 @@
 id: smtp
 info:
-  name: Postfix smtpd
+  name: MDaemon smtpd
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
   metadata:
     hostname: $1
-    product: postfix
+    info: Unregistered
+    operating_system: Windows
+    product: mdaemon
     rarity: 0
-    vendor: postfix
+    vendor: altn
     verified: true
+    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +23,4 @@ tcp:
   - name: smtp
     type: regex
     regex:
-    - ^(?:220-.*\r\n)?220 ([\w._-]+) ESMTP Postfix
+    - '^220 ([\w._-]+) ESMTP MSA MDaemon ([\w._-]+)(?: UNREGISTERED)?; .*\r\n'
