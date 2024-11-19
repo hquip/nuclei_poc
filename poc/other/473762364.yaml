@@ -1,15 +1,15 @@
 id: imap
 info:
-  name: Sun Java System Messaging Multiplexor imapd
+  name: Perdition imapd
   author: nmap,cn-kali-team
   tags: detect,tech,imap,service
   severity: info
   metadata:
-    product: java_system_messaging_server
+    hostname: $1
+    product: perdition
     rarity: 0
-    vendor: sun
+    vendor: horms
     verified: true
-    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +20,4 @@ tcp:
   - name: imap
     type: regex
     regex:
-    - ^\* OK \[CAPABILITY IMAP4[^\]]*\] Messaging Multiplexor \(Sun Java\(tm\) System Messaging Server (\d[-\w_.]+) \(built .*\)\)\r\n
+    - ^\* OK \[CAPABILITY IMAP4 [^]]*\] perdition ready on ([\w._-]+) [a-f\d]+\r\n

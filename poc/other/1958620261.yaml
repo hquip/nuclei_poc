@@ -1,15 +1,13 @@
 id: ftp-proxy
 info:
-  name: Webshield2 FTP proxy
+  name: Pi-Soft SpoonProxy ftp proxy
   author: nmap,cn-kali-team
   tags: detect,tech,ftp-proxy,service
   severity: info
   metadata:
     operating_system: Windows
-    product: winproxy
     rarity: 0
-    vendor: bluecoat
-    verified: true
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +18,4 @@ tcp:
   - name: ftp-proxy
     type: regex
     regex:
-    - ^220 webshield2 FTP proxy ready\.\r\n
+    - ^220-Welcome to SpoonProxy V([\w._-]+) by Pi-Soft Consulting, LLC\r\n
