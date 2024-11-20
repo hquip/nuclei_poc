@@ -1,14 +1,16 @@
 id: sip
 info:
-  name: Tely sipd
+  name: Thomson $1 router sipd
   author: nmap,cn-kali-team
   tags: detect,tech,sip,service
   severity: info
   metadata:
+    device_type: broadband router
     fallback:
     - get-request
+    info: 'serial: $3'
     rarity: 5
-    version: $1
+    version: $2
 tcp:
 - name: sipoptions
   inputs:
@@ -20,4 +22,4 @@ tcp:
   - name: sip
     type: regex
     regex:
-    - '(?i)^SIP/2\.0 200 OK\r\n(?:[^\r\n]+\r\n)*?User-Agent: Tely_v([\d.-]+)\r\n'
+    - '(?i)^SIP/2\.0 500 Server Internal Error\r\n(?:[^\r\n]+\r\n)*?User-Agent: Thomson ([\w-]+) Build ([\d.]+)\r\nX-Serialnumber: (\w+)\r\n'

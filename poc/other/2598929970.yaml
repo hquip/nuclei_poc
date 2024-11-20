@@ -1,13 +1,12 @@
 id: nntp
 info:
-  name: Microsoft NNTP Service
+  name: nntp//rss nntpd
   author: nmap,cn-kali-team
   tags: detect,tech,nntp,service
   severity: info
   metadata:
-    info: refused
-    operating_system: Windows
     rarity: 0
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -18,4 +17,4 @@ tcp:
   - name: nntp
     type: regex
     regex:
-    - ^502 Connection refused\r\n
+    - ^200 nntp//rss v([\d.]+) news server ready\r\n

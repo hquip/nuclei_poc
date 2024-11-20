@@ -1,18 +1,14 @@
 id: smtp
 info:
-  name: Sendmail
+  name: Postfix smtp-sink
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
   metadata:
-    hostname: $1
-    info: AIX $2
-    operating_system: AIX
-    product: sendmail
+    product: postfix
     rarity: 0
-    vendor: sendmail
+    vendor: postfix
     verified: true
-    version: $3
 tcp:
 - name: 'null'
   inputs:
@@ -23,4 +19,4 @@ tcp:
   - name: smtp
     type: regex
     regex:
-    - ^220[\s-](\S+) E?SMTP Sendmail AIX([\d.]+)/UCB (\d[^; ]+);
+    - ^220 smtp-sink ESMTP\r\n$
