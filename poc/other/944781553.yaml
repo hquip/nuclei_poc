@@ -1,14 +1,17 @@
 id: pop3
 info:
-  name: Synametrics Xeams pop3d
+  name: Mailtraq pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
-    product: xeams
+    hostname: $1
+    operating_system: Windows
+    product: mailtraq
     rarity: 0
-    vendor: synametrics
+    vendor: mailtraq
     verified: true
+    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -19,4 +22,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK Synametrics POP3 server ready \d\d/\d\d/\d\d \d\d:\d\d [AP]M\r\n
+    - ^\+OK <[\w.]+@([-\w_.]+)> ready for action \(Mailtraq ([\d.]+)/POP3\)\r\n
