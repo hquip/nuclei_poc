@@ -1,11 +1,11 @@
 id: telnet
 info:
-  name: BitSwitcher firmware
+  name: Philips Strand Light Palette telnetd
   author: nmap,cn-kali-team
   tags: detect,tech,telnet,service
   severity: info
   metadata:
-    device_type: broadband router
+    device_type: media device
     rarity: 0
 tcp:
 - name: 'null'
@@ -17,4 +17,4 @@ tcp:
   - name: telnet
     type: regex
     regex:
-    - '^\xff\xfd\x01\xff\xfd\x1f\xff\xfd!\xff\xfb\x01\xff\xfb\x03\r\r\n\+{79}\r\n\r\+{33}#############\+{33}\r\n\r\+{28}######           ######\+{28}\r\n\r'
+    - '^Horizon Control Remote Connection\r\nCopyright 2006-2009 Horizon Control Inc\. All Rights Reserved\r\n    local commands: echo, noecho, prompt, noprompt, help, exit\r\n<tab><enter> at the start of a line will re-run the previous command\r\nHC>'

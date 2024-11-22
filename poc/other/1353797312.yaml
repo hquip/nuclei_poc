@@ -1,6 +1,6 @@
 id: smtp
 info:
-  name: Eudora smtpd
+  name: Mail essentials for Exchange smtpd
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
@@ -19,4 +19,4 @@ tcp:
   - name: smtp
     type: regex
     regex:
-    - ^220[-\s](\S+) running Eudora Internet Mail Server (\d\S+)
+    - ^220 ([-\w_.]+) Mail essentials  server \(([\d.]+)\) ready for ESMTP transfer\r\n
