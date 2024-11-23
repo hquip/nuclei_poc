@@ -1,14 +1,14 @@
 id: smtp
 info:
-  name: IceWarp smtpd
+  name: Trend Micro InterScan smtpd
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
   metadata:
     hostname: $1
-    product: mail_server
+    product: interscan_messaging_security_suite
     rarity: 0
-    vendor: icewarp
+    vendor: trendmicro
     verified: true
     version: $2
 tcp:
@@ -21,4 +21,4 @@ tcp:
   - name: smtp
     type: regex
     regex:
-    - ^220 ([-\w_.]+) ESMTP HT Mail Server v([\d.]+); .*\r\n
+    - '^220[-\s](\S+) Trend Micro InterScan Messaging Security Suite, Version: (\d\S+) ready'

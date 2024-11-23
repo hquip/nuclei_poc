@@ -1,13 +1,16 @@
 id: telnet
 info:
-  name: COMPEX CGX3224 switch telnetd
+  name: Netkit-telnetd
   author: nmap,cn-kali-team
   tags: detect,tech,telnet,service
   severity: info
   metadata:
-    device_type: switch
-    info: CGX $1.$2
+    info: Linux $1
+    operating_system: Linux
+    product: netkit
     rarity: 0
+    vendor: netkit
+    verified: true
 tcp:
 - name: 'null'
   inputs:
@@ -18,4 +21,4 @@ tcp:
   - name: telnet
     type: regex
     regex:
-    - '^\xff\xfb\x01\xff\xfb\x03\xff\xfd\x18\r\n\r\nCGX3224 Switch Manager Console\. Version: CGX([\d.]+) Bld (\d+),.*\r\n\r\nPassword:'
+    - '^Linux ([\w._-]+) \[INSTALL: [\d-]+\]\nLASTPATCH: [\d:-]+\n'

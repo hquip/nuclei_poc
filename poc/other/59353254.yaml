@@ -1,10 +1,12 @@
 id: smtp-proxy
 info:
-  name: Net at Work Mail Gateway smtp proxy
+  name: Proxy+ smtp proxy
   author: nmap,cn-kali-team
   tags: detect,tech,smtp-proxy,service
   severity: info
   metadata:
+    info: Access denied
+    operating_system: Windows
     rarity: 0
 tcp:
 - name: 'null'
@@ -16,4 +18,4 @@ tcp:
   - name: smtp-proxy
     type: regex
     regex:
-    - ^220 Net at Work Mail Gateway ready\r\n
+    - ^421 proxyplus\.universe SMTP server\. Insecure access - terminating\.\r\n
