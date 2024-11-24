@@ -1,25 +1,23 @@
 id: smtp
 info:
-  name: MailEnable Enterprise smptd
+  name: Lotus Domino smtpd
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
   metadata:
-    hostname: $1
-    operating_system: Windows
-    product: mailenable
-    rarity: 0
-    vendor: mailenable
+    product: lotus_domino
+    rarity: 8
+    vendor: ibm
     verified: true
-    version: $2
 tcp:
-- name: 'null'
+- name: hello
   inputs:
-  - data: ''
+  - data: EHLO\r\n
   host:
   - '{{Hostname}}'
+  port: 25,587,3025
   extractors:
   - name: smtp
     type: regex
     regex:
-    - '^220 ([-.+\w]+) ESMTP MailEnable Service, Version: \d+--([\d.]+) ready at'
+    - ^220 .* SMTP ready at .*\r\n501 Command \"EHLO\" requires an argument\r\n
