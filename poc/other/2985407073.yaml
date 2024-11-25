@@ -1,6 +1,6 @@
 id: http
 info:
-  name: Finchsync PocketPC Synchonizer httpd
+  name: Motion Webcam gateway httpd
   author: nmap,cn-kali-team
   tags: detect,tech,http,service
   severity: info
@@ -16,4 +16,4 @@ tcp:
   - name: http
     type: regex
     regex:
-    - ^HTTP/1\.1 408 Request Timeout\nContent-Length:0\nContent-Type:text/html;charset=UTF-8\n\n$
+    - '^HTTP/1\.1 200 OK\nMax-Age: 0\nExpires: 0\nCache-Control: no-cache\nCache-Control: private\nPragma: no-cache\nContent-type: multipart/x-mixed-replace;boundary=BoundaryString\n\n--BoundaryString\n'

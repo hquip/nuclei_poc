@@ -1,16 +1,15 @@
 id: ssh
 info:
-  name: HP Network Automation
+  name: Syncplify.me Server sftpd
   author: nmap,cn-kali-team
   tags: detect,tech,ssh,service
   severity: info
   metadata:
     info: protocol $1
-    product: network_automation
+    product: syncplify.me_server
     rarity: 0
-    vendor: hp
+    vendor: syncplify
     verified: true
-    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -21,4 +20,4 @@ tcp:
   - name: ssh
     type: regex
     regex:
-    - ^SSH-([\d.]+)-NA_([\d.]+)\r\n
+    - ^SSH-([\d.]+)-Syncplify\.me\r\n

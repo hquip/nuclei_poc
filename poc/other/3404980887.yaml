@@ -7,6 +7,7 @@ info:
   metadata:
     fallback:
     - get-request
+    info: bandwidth maxed out
     rarity: 5
     version: $1
 tcp:
@@ -20,4 +21,4 @@ tcp:
   - name: rtsp
     type: regex
     regex:
-    - '^RTSP/1\.0 400 Bad Request\r\nServer: AirTunes/([\w._-]+)\r\n\r\n'
+    - '^RTSP/1\.0 453 Not Enough Bandwidth\r\nServer: AirTunes/([\w._-]+)\r\n\r\n'
