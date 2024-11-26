@@ -1,14 +1,12 @@
 id: ftp
 info:
-  name: IBM Infoprint $2$3 ftpd
+  name: Zope Medusa ftpd
   author: nmap,cn-kali-team
   tags: detect,tech,ftp,service
   severity: info
   metadata:
-    device_type: printer
-    hostname: $1
     rarity: 0
-    version: $4
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -19,4 +17,4 @@ tcp:
   - name: ftp
     type: regex
     regex:
-    - ^220 (\w+) IBM Infoprint (Color |)(\d+) FTP Server ([\w.]+) ready\.\r\n
+    - ^220  FTP server \(Medusa Async V([\d.]+) \[experimental\]\) ready\.\r\n

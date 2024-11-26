@@ -1,12 +1,15 @@
 id: ldap
 info:
-  name: Anonymous bind OK
+  name: OpenLDAP
   author: nmap,cn-kali-team
   tags: detect,tech,ldap,service
   severity: info
   metadata:
-    info: Anonymous bind OK
+    product: openldap
     rarity: 6
+    vendor: openldap
+    verified: true
+    version: 2.4.X
 tcp:
 - name: ldapbind-req
   inputs:
@@ -18,4 +21,4 @@ tcp:
   - name: ldap
     type: regex
     regex:
-    - ^0\x0c\x02\x01\x01a\x07\n\x01\0\x04\0\x04\0
+    - ^0\x84\0\0\0I\x02\x01\x01a\x84\0\0\0@\n\x01\x02\x04\0\x049historical protocol version requested, use LDAPv3 instead$
