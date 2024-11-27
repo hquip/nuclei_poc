@@ -1,12 +1,18 @@
 id: imap
 info:
-  name: eXtremail IMAP server
+  name: Microsoft Exchange Server imapd
   author: nmap,cn-kali-team
   tags: detect,tech,imap,service
   severity: info
   metadata:
+    hostname: $2
+    info: Hungarian
+    operating_system: Windows
+    product: exchange_server
     rarity: 0
-    version: $1.$2.$3
+    vendor: microsoft
+    verified: true
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -17,4 +23,4 @@ tcp:
   - name: imap
     type: regex
     regex:
-    - ^\* OK eXtremail V(\d[-.\w]+) release (\d+) rev(\d+) IMAP4 server started\r\n
+    - ^\* OK Microsoft Exchange IMAP4rev1 kiszolg\xe1l\xf3 verzi\xf3 (\d[-.\w]+) \(([-.\w]+)\) k\xe9sz\r\n

@@ -1,11 +1,11 @@
 id: telnet
 info:
-  name: Cabletron CSX$1 router telnetd
+  name: HP Remote Insight Lights-Out telnetd
   author: nmap,cn-kali-team
   tags: detect,tech,telnet,service
   severity: info
   metadata:
-    device_type: router
+    device_type: remote management
     rarity: 0
 tcp:
 - name: 'null'
@@ -17,4 +17,4 @@ tcp:
   - name: telnet
     type: regex
     regex:
-    - ^\xff\xfd\x03\xff\xfb\x01\x1b\[2J\x1b\[1;1H\x1b\[0m\x1b\[\?3l\x1b\(0\x1b\[2;40H\x1b\(B\x1b\(0\x1b\[2;28H\x1b\(BCSX([-\w_.]+) Local Management\x1b\[0m\x1b\(0\x1b\[5;24H\x1b\(BCABLETRON Systems, Incorporated\x1b
+    - '^\xff\xfb\0\xff\xfd\0\xff\xfb\x01\xff\xfd\x01\xff\xfb\x03\xff\xfd\x03\x1b\[0;37;40m\x1b\[2J\x1b\[1;1HLogin Name:  '

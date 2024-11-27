@@ -1,6 +1,6 @@
 id: telnet
 info:
-  name: Dell iDRAC6 telnetd
+  name: dfterm2 telnetd for Dwarf Fortress game
   author: nmap,cn-kali-team
   tags: detect,tech,telnet,service
   severity: info
@@ -16,4 +16,4 @@ tcp:
   - name: telnet
     type: regex
     regex:
-    - '^\xff\xfd\x01\xff\xfd\x1f\xff\xfd!\xff\xfb\x01\xff\xfb\x03\r\r\n\r\nnameDRAC login: '
+    - ^\x1b\[\?25l\xff\xfb\x01\xff\xfb\x03\xff\xfc\"\xff\xfd\x1f\x1b\[2J\x1b\[0m\x1b\[40m\x1b\[30m\x1b\[1;1H\x1b\[34;1m\xe2\x95\x94Enter your nickname for this session \(Alt\+1\)\xe2\x95\x90

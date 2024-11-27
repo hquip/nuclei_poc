@@ -1,11 +1,15 @@
 id: pop3
 info:
-  name: Atmail pop3d
+  name: Citadel pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
+    hostname: $1
+    product: ux
     rarity: 0
+    vendor: citadel
+    verified: true
 tcp:
 - name: 'null'
   inputs:
@@ -16,4 +20,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK Atmail IMAP/POP3 server ready\r\n
+    - ^\+OK Citadel POP3 server <\d+@([-\w_.]+)>\r\n
