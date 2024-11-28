@@ -1,11 +1,10 @@
 id: ftp
 info:
-  name: Novonyx ftpd
+  name: NetSilicon DPO-7300 ftpd
   author: nmap,cn-kali-team
   tags: detect,tech,ftp,service
   severity: info
   metadata:
-    operating_system: NetWare
     rarity: 0
     version: $1
 tcp:
@@ -18,4 +17,4 @@ tcp:
   - name: ftp
     type: regex
     regex:
-    - ^220-  Novonyx FTP Server for NetWare, v([\d.]+) \(
+    - ^220 DPO-7300 FTP Server ([\d.]+) ready\.\n

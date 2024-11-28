@@ -1,15 +1,17 @@
 id: ssh
 info:
-  name: Kojoney SSH honeypot
+  name: Pragma Fortress SSH Server
   author: nmap,cn-kali-team
   tags: detect,tech,ssh,service
   severity: info
   metadata:
-    info: protocol 2.0
-    product: twisted
+    info: protocol $1
+    operating_system: Windows
+    product: fortress_ssh_server
     rarity: 0
-    vendor: twistedmatrix
+    vendor: pragmasys
     verified: true
+    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +22,4 @@ tcp:
   - name: ssh
     type: regex
     regex:
-    - ^SSH-2\.0-Twisted\r?\n
+    - ^SSH-([\d.]+)-Pragma FortressSSH ([\d.]+)\n
