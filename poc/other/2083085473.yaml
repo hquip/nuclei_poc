@@ -1,15 +1,15 @@
 id: ftp
 info:
-  name: HP-UX ftpd
+  name: Ricoh DC SR-10 ftpd
   author: nmap,cn-kali-team
   tags: detect,tech,ftp,service
   severity: info
   metadata:
-    hostname: $1
-    info: patchlevel $3
-    operating_system: HP-UX
+    operating_system: Windows
+    product: dc_software
     rarity: 0
-    version: $2
+    vendor: ricoh
+    verified: true
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +20,4 @@ tcp:
   - name: ftp
     type: regex
     regex:
-    - ^220 ([-.+\w ]+) FTP server \(Version (\d[-.\w]+)\(([^\)]+)\) [A-Z][a-z]{2} [A-Z].*\d{4}\) ready\.\r\n
+    - ^220 DSC ftpd 1\.0 FTP Server ready\.\r\n

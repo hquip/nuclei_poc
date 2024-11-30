@@ -1,16 +1,13 @@
 id: smtp
 info:
-  name: Trend Micro InterScan smtpd
+  name: eXtremail smtpd
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
   metadata:
     hostname: $1
-    product: interscan_messaging_security_suite
     rarity: 0
-    vendor: trendmicro
-    verified: true
-    version: $2
+    version: $2.$3
 tcp:
 - name: 'null'
   inputs:
@@ -21,4 +18,4 @@ tcp:
   - name: smtp
     type: regex
     regex:
-    - '^220[-\s](\S+) Trend Micro InterScan Messaging Security Suite, Version: (\d\S+) ready'
+    - ^220 ([-.\w]+) eXtremail V(\d[-.\w]+) release (\d+) ESMTP server ready \.\.\.\r\n

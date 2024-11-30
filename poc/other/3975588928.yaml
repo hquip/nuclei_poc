@@ -1,17 +1,12 @@
 id: smtp
 info:
-  name: Sun Java System Messaging Server smtpd
+  name: Postini smtpd
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
   metadata:
-    hostname: $1
-    info: $3 bits
-    product: java_system_messaging_server
     rarity: 0
-    vendor: sun
-    verified: true
-    version: $2
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -22,4 +17,4 @@ tcp:
   - name: smtp
     type: regex
     regex:
-    - ^220 ([-\w_.]+) -- Server ESMTP \(Sun Java\(tm\) System Messaging Server ([\w._-]+) \(built .*; (\d+)bit\)
+    - ^220 Postini E?SMTP (\d+) [\w\d_+/:-]+ ready

@@ -1,16 +1,11 @@
 id: pop3
 info:
-  name: Microsoft Exchange pop3d
+  name: PSCS VPop3
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
-    hostname: $1
-    operating_system: Windows
-    product: exchange_server
     rarity: 0
-    vendor: microsoft
-    verified: true
 tcp:
 - name: 'null'
   inputs:
@@ -21,4 +16,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK Authorized Users Only! \(([-\w_.]+)\)\r\n
+    - ^\+OK VPOP3 Server Ready <.*>\r\n

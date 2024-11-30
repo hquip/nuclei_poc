@@ -1,12 +1,15 @@
 id: domain
 info:
-  name: RIPE Atlas Anchor
+  name: Simple DNS Plus
   author: nmap,cn-kali-team
   tags: detect,tech,domain,service
   severity: info
   metadata:
+    operating_system: Windows
+    product: simple_dns_plus
     rarity: 1
-    version: $1
+    vendor: jh_software
+    verified: true
 tcp:
 - name: dnsversion-bind-req
   inputs:
@@ -18,4 +21,4 @@ tcp:
   - name: domain
     type: regex
     regex:
-    - (?i)\x07version\x04bind\0\0\x10\0\x03\xc0\x0c\0\x10\0\x03.{7}Atlas Anchor ([\d\.]+)
+    - ^(?:..)?\0\x06\x81\x04\0\x01\0\0\0\0\0\0\x07version\x04bind\0\0\x10\0\x03
