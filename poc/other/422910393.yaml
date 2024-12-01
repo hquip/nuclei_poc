@@ -1,11 +1,15 @@
 id: irc
 info:
-  name: iacd ircd
+  name: UnrealIRCd
   author: nmap,cn-kali-team
   tags: detect,tech,irc,service
   severity: info
   metadata:
+    info: Admin email $1
+    product: unrealircd
     rarity: 0
+    vendor: unrealircd
+    verified: true
 tcp:
 - name: 'null'
   inputs:
@@ -16,4 +20,4 @@ tcp:
   - name: irc
     type: regex
     regex:
-    - ^PING :42\r\n$
+    - '^ERROR :Closing Link: \[[\d.]+\] \(Throttled: Reconnecting too fast\) -Email ([-\w_.]+@[-\w_.]+) for more information\.'

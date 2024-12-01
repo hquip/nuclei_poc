@@ -1,14 +1,14 @@
 id: pop3
 info:
-  name: Synametrics Xeams pop3d
+  name: GoMail mass mailing plugin pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
-    product: xeams
+    hostname: $1
+    operating_system: Windows
     rarity: 0
-    vendor: synametrics
-    verified: true
+    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -19,4 +19,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK Synametrics POP3 server ready \d\d/\d\d/\d\d \d\d:\d\d [AP]M\r\n
+    - ^\+OK ([-\w_.]+) .* GoMail V([\d.]+) POP3
