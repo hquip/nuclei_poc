@@ -1,11 +1,10 @@
 id: daytime
 info:
-  name: Microsoft Windows daytime
+  name: Greyware Domain Time II daytime
   author: nmap,cn-kali-team
   tags: detect,tech,daytime,service
   severity: info
   metadata:
-    operating_system: Windows
     rarity: 0
 tcp:
 - name: 'null'
@@ -17,4 +16,4 @@ tcp:
   - name: daytime
     type: regex
     regex:
-    - ^.... \d{1,2}:\d{1,2}:\d{1,2} (?:19|20)\d\d-\d{1,2}-\d{1,2}\n$
+    - ^\d+ \d\d-\d\d-\d\d \d\d:\d\d:\d\d 50 0 4 \d+\.0 UTC\(NIST\) \*\r\n
