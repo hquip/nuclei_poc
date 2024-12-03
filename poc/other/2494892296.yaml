@@ -1,13 +1,16 @@
 id: ftp
 info:
-  name: Sharp AR-C260M or AR-M351N printer ftpd
+  name: Cerberus FTP Server
   author: nmap,cn-kali-team
   tags: detect,tech,ftp,service
   severity: info
   metadata:
-    device_type: printer
+    info: Personal Edition; Unregistered
+    operating_system: Windows
+    product: ftp_server
     rarity: 0
-    version: $1
+    vendor: cerberusftp
+    verified: true
 tcp:
 - name: 'null'
   inputs:
@@ -18,4 +21,4 @@ tcp:
   - name: ftp
     type: regex
     regex:
-    - ^220 Imagistics ZB3500080 Ver ([\w._-]+) FTP server\.\r\n
+    - ^220-Cerberus FTP Server - Personal Edition\r\n220-This is the UNLICENSED personal edition and may be used for home, personal use only\r\n220 Connected to Aurora FTP server\.\.\.\r\n

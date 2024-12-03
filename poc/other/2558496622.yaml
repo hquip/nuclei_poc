@@ -1,16 +1,13 @@
 id: ftp-proxy
 info:
-  name: AnalogX FTP proxy
+  name: CCProxy ftp proxy
   author: nmap,cn-kali-team
   tags: detect,tech,ftp-proxy,service
   severity: info
   metadata:
-    hostname: $1
-    product: proxy
+    info: unregistered
+    operating_system: Windows
     rarity: 0
-    vendor: analogx
-    verified: true
-    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -21,4 +18,4 @@ tcp:
   - name: ftp-proxy
     type: regex
     regex:
-    - ^220 ([-.+\w]+) FTP AnalogX Proxy (\d[-.\w]+) \(Release\) ready\r\n
+    - ^220-CCProxy FTP Service\(Unregistered\)\r\n

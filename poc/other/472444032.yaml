@@ -1,12 +1,15 @@
 id: telnet
 info:
-  name: Planet IP phone telnetd
+  name: BusyBox telnetd
   author: nmap,cn-kali-team
   tags: detect,tech,telnet,service
   severity: info
   metadata:
-    device_type: VoIP phone
+    product: busybox
     rarity: 0
+    vendor: busybox
+    verified: true
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -17,4 +20,4 @@ tcp:
   - name: telnet
     type: regex
     regex:
-    - '^\n\rPlanet IP phone -122M : CLI\n\rLogin : '
+    - ^\xff\xfd\x01\xff\xfd\x1f\xff\xfd!\xff\xfb\x01\xff\xfb\x03\r\r\n\r\n\r\nBusyBox v(.*) Built-in shell \(ash\)\r\n

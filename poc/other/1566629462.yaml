@@ -1,13 +1,15 @@
 id: ssh
 info:
-  name: Adtran sshd
+  name: OpenSSH
   author: nmap,cn-kali-team
   tags: detect,tech,ssh,service
   severity: info
   metadata:
     info: protocol $1
-    operating_system: AOS
+    product: openssh
     rarity: 0
+    vendor: openbsd
+    verified: true
     version: $2
 tcp:
 - name: 'null'
@@ -19,4 +21,4 @@ tcp:
   - name: ssh
     type: regex
     regex:
-    - ^SSH-([\d.]+)-Adtran_([\w._-]+)\r\n
+    - ^SSH-([\d.]+)-OpenSSH_([\w._-]+-hpn)\r?\n
