@@ -1,6 +1,6 @@
 id: pop3
 info:
-  name: Netscape Mail Server pop3d
+  name: cppop pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
@@ -18,4 +18,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK ([-.\w]+) POP3 server \(Netscape Mail Server v(\d[-.\w])\) ready
+    - ^\+OK POP3 ([-\w_.]+) \[cppop (\d[^]]+)\] at \[

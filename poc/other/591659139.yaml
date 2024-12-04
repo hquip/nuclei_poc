@@ -1,15 +1,14 @@
 id: pop3
 info:
-  name: iPlanet messaging multiplexor
+  name: GNU Mailutils pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
-    product: iplanet_messaging_server
+    product: mailutils
     rarity: 0
-    vendor: sun
+    vendor: gnu
     verified: true
-    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +19,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK Messaging Multiplexor \(iPlanet Messaging Server ([-\w_.\s]+) \(built .*\)\)\r\n
+    - ^\+OK POP3 Ready <\d{3,6}\.1[012]\d{8}@\w+>\r\n

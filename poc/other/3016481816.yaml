@@ -1,11 +1,10 @@
 id: ftp
 info:
-  name: RTOS-UH ftpd
+  name: Minolta PagePro 20 printer ftpd
   author: nmap,cn-kali-team
   tags: detect,tech,ftp,service
   severity: info
   metadata:
-    operating_system: RTOS-UH
     rarity: 0
     version: $1
 tcp:
@@ -18,4 +17,4 @@ tcp:
   - name: ftp
     type: regex
     regex:
-    - '^220-  FTP Server \(RTOS-UH\) ready\. \(c\)IEP  Version: ([\d.]+)\r\n220 Connection is automatically closed if idle for 10 Minutes\r\n'
+    - ^220 MLT-57066 Version ([\w.]+) ready\.\r\n
