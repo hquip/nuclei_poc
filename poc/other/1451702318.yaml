@@ -5,6 +5,7 @@ info:
   tags: detect,tech,pop3-proxy,service
   severity: info
   metadata:
+    hostname: $1
     rarity: 0
 tcp:
 - name: 'null'
@@ -16,4 +17,4 @@ tcp:
   - name: pop3-proxy
     type: regex
     regex:
-    - ^\+OK \[ISafe POP3 Proxy\] \r\n
+    - ^\+OK <[\d.]+@([-\w_.]+)> \[ISafe POP3 Proxy\] \r\n

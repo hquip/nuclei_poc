@@ -1,13 +1,16 @@
 id: telnet
 info:
-  name: Multicom voip telnetd
+  name: Cisco router telnetd
   author: nmap,cn-kali-team
   tags: detect,tech,telnet,service
   severity: info
   metadata:
-    device_type: VoIP adapter
-    info: MultiVOIP $1
+    device_type: router
+    operating_system: IOS
+    product: telnet
     rarity: 0
+    vendor: cisco
+    verified: true
 tcp:
 - name: 'null'
   inputs:
@@ -18,4 +21,4 @@ tcp:
   - name: telnet
     type: regex
     regex:
-    - ^\xff\xfb\x03\xff\xfb\x01\n\r\n\r             Copyright \(C\) \d+ Multi-Tech Systems, Inc\.,\n\r                      Multi-Tech Systems, Inc\.,\n\r                   2205 Woodale Drive, Mounds View,\n\r                        Minnesota 55112, USA\.\n\r\n\r                       MultiVOIP Version ([\d.]+)\n\r
+    - ^\xff\xfb\x01\xff\xfb\x03\xff\xfd\x18\xff\xfd\x1f\r\n[-\w_.]+>%

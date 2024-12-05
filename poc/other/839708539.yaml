@@ -1,12 +1,11 @@
 id: printer
 info:
-  name: Linux lpd
+  name: LPRng
   author: nmap,cn-kali-team
   tags: detect,tech,printer,service
   severity: info
   metadata:
-    info: client IP must resolve
-    operating_system: Linux
+    info: Not authorized
     rarity: 0
 tcp:
 - name: 'null'
@@ -18,4 +17,4 @@ tcp:
   - name: printer
     type: regex
     regex:
-    - '^lpd: Host name for your address \(\d+\.\d+\.\d+\.\d+\) unknown\n$'
+    - ^\x01no connect permissions\n$
