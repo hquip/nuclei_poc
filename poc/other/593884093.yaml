@@ -1,15 +1,16 @@
 id: imap
 info:
-  name: Novell GroupWise imapd
+  name: Axigen imapd
   author: nmap,cn-kali-team
   tags: detect,tech,imap,service
   severity: info
   metadata:
-    operating_system: Unix
-    product: groupwise
+    operating_system: Linux
+    product: axigen_mail_server
     rarity: 0
-    vendor: novell
+    vendor: gecad
     verified: true
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +21,4 @@ tcp:
   - name: imap
     type: regex
     regex:
-    - ^\* OK \[CAPABILITY IMAP4rev1 .*\] GroupWise Server Ready\r\n
+    - ^\* OK Axigen-([\w._-]+) \(Linux/x64\) IMAP4rev1 service is ready\r\n

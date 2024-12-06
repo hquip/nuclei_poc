@@ -1,11 +1,11 @@
 id: ftp-proxy
 info:
-  name: Proxy Suite ftp proxy
+  name: ezProxy ftp proxy
   author: nmap,cn-kali-team
   tags: detect,tech,ftp-proxy,service
   severity: info
   metadata:
-    hostname: $1
+    operating_system: Windows
     rarity: 0
 tcp:
 - name: 'null'
@@ -17,4 +17,4 @@ tcp:
   - name: ftp-proxy
     type: regex
     regex:
-    - ^220 Welcome to ([-\w_.]+) Ftp Proxy Service\.\r\n
+    - ^220 ezProxy FTP Proxy Server Ready \r\n

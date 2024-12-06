@@ -1,16 +1,13 @@
 id: ftp
 info:
-  name: Axway SecureTransport ftpd
+  name: OkiLAN 8100e print server
   author: nmap,cn-kali-team
   tags: detect,tech,ftp,service
   severity: info
   metadata:
-    hostname: $1
-    product: securetransport
+    device_type: print server
     rarity: 0
-    vendor: axway
-    verified: true
-    version: $2
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -21,4 +18,4 @@ tcp:
   - name: ftp
     type: regex
     regex:
-    - ^220 ([-/.+\w]+) FTP server \(SecureTransport (\d[-.\w]+)\) ready\.    \r\n
+    - ^220 EthernetBoard OkiLAN 8100e Ver ([\d.]+) FTP server\.\r\n

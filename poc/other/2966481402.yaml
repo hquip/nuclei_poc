@@ -1,13 +1,13 @@
 id: rtsp
 info:
-  name: RealOne Server
+  name: GM Streaming Server rtspd
   author: nmap,cn-kali-team
   tags: detect,tech,rtsp,service
   severity: info
   metadata:
+    device_type: webcam
     fallback:
     - get-request
-    info: $2
     rarity: 5
     version: $1
 tcp:
@@ -21,4 +21,4 @@ tcp:
   - name: rtsp
     type: regex
     regex:
-    - '(?i)^RTSP/1\.0 200 OK\r\n(?:[^\r\n]+\r\n)*?Server: RealServer Version (\d[-.\w]+) \(([-.+\w]+)\)\r\n'
+    - '^RTSP/1\.0 200 OK\r\nServer: GM Streaming Server v([\w._-]+)\r\nPublic: DESCRIBE, SETUP, TEARDOWN, PLAY, PAUSE\r\n\r\n$'
