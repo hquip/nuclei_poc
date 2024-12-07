@@ -1,12 +1,14 @@
 id: pop3
 info:
-  name: WinGate pop3d
+  name: DynFX pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
+    hostname: $1
     operating_system: Windows
     rarity: 0
+    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -17,4 +19,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK WinGate Engine POP3 Gateway ready\r\n
+    - ^\+OK ([-\w_.]+) DynFX POP3 Server ([-\w_.]+) <

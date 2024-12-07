@@ -1,14 +1,13 @@
 id: telnet
 info:
-  name: FirstClass messaging system telnetd
+  name: OpenPLI telnetd
   author: nmap,cn-kali-team
   tags: detect,tech,telnet,service
   severity: info
   metadata:
-    product: firstclass
+    device_type: media device
+    operating_system: Linux
     rarity: 0
-    vendor: opentext
-    verified: true
 tcp:
 - name: 'null'
   inputs:
@@ -19,4 +18,4 @@ tcp:
   - name: telnet
     type: regex
     regex:
-    - '^\x1b\[H\x1b\[2JYou have connected to a FirstClass System\. Please login\.\.\.\r\nUserID: '
+    - '^\xff\xfd\x01\xff\xfd\x1f\xff\xfd!\xff\xfb\x01\xff\xfb\x03\r\r\nPLi\xae openpli dm600pvr\r\n\r\r\n\rdm600pvr login: '

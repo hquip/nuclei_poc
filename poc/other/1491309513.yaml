@@ -1,12 +1,11 @@
 id: pop3-proxy
 info:
-  name: CCProxy pop3d
+  name: YahooPOPs! pop3 proxy
   author: nmap,cn-kali-team
   tags: detect,tech,pop3-proxy,service
   severity: info
   metadata:
     rarity: 0
-    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -17,4 +16,4 @@ tcp:
   - name: pop3-proxy
     type: regex
     regex:
-    - ^\+OK CCProxy (\S+) POP3 Service Ready\r\n
+    - ^\+OK POP3 Y(?:ahoo)?POPs! proxy ready\r\n

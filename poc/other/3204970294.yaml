@@ -1,12 +1,12 @@
 id: printer
 info:
-  name: BSD/Linux lpd
+  name: QMC DeskLaser printer
   author: nmap,cn-kali-team
   tags: detect,tech,printer,service
   severity: info
   metadata:
-    hostname: $1
-    info: source port denied
+    device_type: printer
+    info: Status $1
     rarity: 0
 tcp:
 - name: 'null'
@@ -18,4 +18,4 @@ tcp:
   - name: printer
     type: regex
     regex:
-    - '^lpd \[@([-\w_.]+)\]: connected from invalid port \(\d+\)\n'
+    - ^Printer Status ---> (.*)                    \nno entries\n
