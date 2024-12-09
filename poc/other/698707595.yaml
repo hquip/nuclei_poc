@@ -1,11 +1,10 @@
 id: ftp
 info:
-  name: Intel NetportExpress print server ftpd
+  name: Alpha ftpd
   author: nmap,cn-kali-team
   tags: detect,tech,ftp,service
   severity: info
   metadata:
-    device_type: print server
     rarity: 0
 tcp:
 - name: 'null'
@@ -17,4 +16,4 @@ tcp:
   - name: ftp
     type: regex
     regex:
-    - ^220 Intel NetportExpress\(tm\) 10/100 Single-port FTP server ready\.\r\n
+    - ^220 Welcome to ALPHA -FTPd server\.\r\n

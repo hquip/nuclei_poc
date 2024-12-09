@@ -1,17 +1,12 @@
 id: ftp
 info:
-  name: Oracle XML DB ftpd
+  name: Software Data Cable ftpd
   author: nmap,cn-kali-team
   tags: detect,tech,ftp,service
   severity: info
   metadata:
-    hostname: $1
-    info: 64 bits
-    product: database_server
     rarity: 0
-    vendor: oracle
-    verified: true
-    version: $2
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -22,4 +17,4 @@ tcp:
   - name: ftp
     type: regex
     regex:
-    - ^(?:200-.*\r\n)?220 ([-\w_.]+) FTP Server \(Oracle XML DB/Oracle9i Enterprise Edition Release ([\d.]+) - 64bit Production\) ready\.\r\n
+    - ^220 SoftDataCable ([\w._-]+) ready\r\n

@@ -1,19 +1,14 @@
 id: http
 info:
-  name: Virata-EmWeb
+  name: Check Point R65 firewall http config
   author: nmap,cn-kali-team
   tags: detect,tech,http,service
   severity: info
   metadata:
-    device_type: printer
+    device_type: firewall
     fallback:
     - get-request
-    info: HP printer http config
-    product: emweb
     rarity: 5
-    vendor: virata
-    verified: true
-    version: $SUBST(1,"_",".")
 tcp:
 - name: rtsprequest
   inputs:
@@ -25,4 +20,4 @@ tcp:
   - name: http
     type: regex
     regex:
-    - '^HTTP/1\.1 400 Bad Request\r\nServer: Virata-EmWeb/R([\d_]+)\r\nContent-Length: 0\r\n\r\n400 Bad Request\r\n$'
+    - '^HTTP/1\.0 200 OK\r\nPragma: no-cache\r\nCache-Control: no-store\r\nContent-Type: text/html\r\nContent-Length: 229\r\n\r\n<html>\r\n<head>\r\n<title> Error </title>\r\n</head>\r\n<body>\r\n<!-- user defined strings -->\r\nAccess denied due to security policy violation<br><br><!-- reject ID -->\r\nReject ID: [0-9a-f-]+\r\n<br>\r\n<br>\r\n</body>\r\n</html>$'
