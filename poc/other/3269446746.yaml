@@ -1,13 +1,15 @@
 id: ssh
 info:
-  name: AllegroSoft RomSShell sshd
+  name: WingFTP sftpd
   author: nmap,cn-kali-team
   tags: detect,tech,ssh,service
   severity: info
   metadata:
     info: protocol $1
+    product: wing_ftp_server
     rarity: 0
-    version: $2
+    vendor: wftpserver
+    verified: true
 tcp:
 - name: 'null'
   inputs:
@@ -18,4 +20,4 @@ tcp:
   - name: ssh
     type: regex
     regex:
-    - ^SSH-([\d.]+)-RomSShell_([\w._-]+)\r\n
+    - ^SSH-([\d.]+)-WeOnlyDo-WingFTP\r\n

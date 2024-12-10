@@ -1,15 +1,12 @@
 id: imap
 info:
-  name: UW imapd
+  name: TeamXchange imapd
   author: nmap,cn-kali-team
   tags: detect,tech,imap,service
   severity: info
   metadata:
-    product: imap_toolkit
+    hostname: $1
     rarity: 0
-    vendor: uw
-    verified: true
-    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +17,4 @@ tcp:
   - name: imap
     type: regex
     regex:
-    - ^\* OK \[CAPABILITY (?:IMAP4 )?IMAP4REV1 .*IMAP4rev1 (200\d\.[-.\w]+) at
+    - ^\* OK TeamXchange IMAP4rev1 server \(([\w._-]+)\) ready\.\r\n

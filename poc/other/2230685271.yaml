@@ -1,12 +1,14 @@
 id: nntp
 info:
-  name: NNTPCache
+  name: Classic Hamster NNTPd
   author: nmap,cn-kali-team
   tags: detect,tech,nntp,service
   severity: info
   metadata:
-    info: Access denied
+    info: posting ok
+    operating_system: Windows
     rarity: 0
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -17,4 +19,4 @@ tcp:
   - name: nntp
     type: regex
     regex:
-    - ^502 access denied <[-\w_.]+@[-\w_.]+>, you do not have connect permissions in the nntpcache\.access file\.\r\n
+    - '^200 NNTP-Server Classic Hamster (?:Vr\.|Version) \d[-.\w ]+ \(Build (\d[-.\w ]+)\) \(post ok\) says: Hi!\r\n'
