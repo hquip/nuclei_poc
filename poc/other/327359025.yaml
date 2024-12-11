@@ -1,10 +1,11 @@
 id: smtp
 info:
-  name: Nemesis smtpd
+  name: totemomail Encryption Gateway smtpd
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
   metadata:
+    info: 'time zone: $1'
     rarity: 0
 tcp:
 - name: 'null'
@@ -16,4 +17,4 @@ tcp:
   - name: smtp
     type: regex
     regex:
-    - ^220 Welcome to Nemesis ESMTP server on \S+
+    - ^220 totemomail SMTP Server ready [\w, :]+ ([+-]\d\d\d\d) \([A-Z]*\)\r\n
