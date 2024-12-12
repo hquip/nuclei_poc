@@ -1,15 +1,13 @@
 id: pop3-proxy
 info:
-  name: PGP Universal pop3 proxy
+  name: DeleGate pop3 proxy
   author: nmap,cn-kali-team
   tags: detect,tech,pop3-proxy,service
   severity: info
   metadata:
-    info: 'Proxied greeting: $1'
-    product: universal_server
+    hostname: $2
     rarity: 0
-    vendor: pgp
-    verified: true
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +18,4 @@ tcp:
   - name: pop3-proxy
     type: regex
     regex:
-    - ^\+OK (.*) \(PGP Universal service is proxying this connection\)\r\n
+    - ^\+OK Proxy-POP server \(DeleGate/([\d.]+) by ysato AT delegate DOT org\) at ([-\w_.]+) starting\.\r\n

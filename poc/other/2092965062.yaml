@@ -1,12 +1,13 @@
 id: pop3
 info:
-  name: Merak Mail Server pop3d
+  name: WinRoute Pro pop3
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
-    operating_system: Windows
+    hostname: $2
     rarity: 0
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -17,4 +18,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK \]-:\^:-\[ \]-:\^:-\[ POP3
+    - ^\+OK WinRoute Pro ([\d.]+) POP3 server ready <[-\w_.]+@([-\w_.]+)>\r\n
