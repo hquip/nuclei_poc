@@ -1,6 +1,6 @@
 id: irc-proxy
 info:
-  name: psyBNC
+  name: sbnc
   author: nmap,cn-kali-team
   tags: detect,tech,irc-proxy,service
   severity: info
@@ -16,4 +16,4 @@ tcp:
   - name: irc-proxy
     type: regex
     regex:
-    - '^:.*!psyBNC@lam3rz\.de NOTICE \* :'
+    - ^:sbnc!sbnc@sbnc\.soohrt\.org NOTICE \* :Wellcum\r\n

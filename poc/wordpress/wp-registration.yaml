@@ -1,15 +1,15 @@
-id: wp-registration
+id: wp-registration-14bf8ea5c39be497565c43f4816e1c46
 
 info:
   name: >
-    Simple User Registration <= 5.5 - Missing Authorization
+    Simple User Registration <= 5.5 - Missing Authorization to User Deletion
   author: topscoder
   severity: high
   description: >
     
   reference:
     - https://github.com/topscoder/nuclei-wordfence-cve
-    - https://www.wordfence.com/threat-intel/vulnerabilities/id/169d06e1-055b-422a-a466-155ec43e0dbb?source=api-scan
+    - https://www.wordfence.com/threat-intel/vulnerabilities/id/e074c818-8432-4ee1-a376-0abde3666bc3?source=api-scan
   classification:
     cvss-metrics: 
     cvss-score: 

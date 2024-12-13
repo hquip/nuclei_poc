@@ -1,13 +1,10 @@
 id: printer
 info:
-  name: NetSarang Xlpd
+  name: ActiveFax lpd
   author: nmap,cn-kali-team
   tags: detect,tech,printer,service
   severity: info
   metadata:
-    hostname: $1
-    info: HP LaserJet $2; Status $3
-    operating_system: Windows
     rarity: 6
 tcp:
 - name: terminal-server
@@ -20,4 +17,4 @@ tcp:
   - name: printer
     type: regex
     regex:
-    - '^Host Name: ([-\w_.]+)\nPrinter Device: hp LaserJet (\w+)\nPrinter Status: ([^\r\n]+)\n\0\0'
+    - '^ActiveFax Server: There are \d+ entries in the Faxlist\r\n'

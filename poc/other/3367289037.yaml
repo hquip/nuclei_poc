@@ -1,11 +1,10 @@
 id: smtp
 info:
-  name: mailfront smtpd
+  name: PostCast SMTP server
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
   metadata:
-    hostname: $1
     rarity: 0
 tcp:
 - name: 'null'
@@ -17,4 +16,4 @@ tcp:
   - name: smtp
     type: regex
     regex:
-    - ^220 ([-\w_.]+) mailfront ESMTP\r\n
+    - ^220 PostCast SMTP server.*\r\n$
