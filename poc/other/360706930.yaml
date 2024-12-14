@@ -1,13 +1,11 @@
 id: http
 info:
-  name: Motion-httpd
+  name: JOSM OpenStreetMap editor remote control httpd
   author: nmap,cn-kali-team
   tags: detect,tech,http,service
   severity: info
   metadata:
-    device_type: webcam
     rarity: 0
-    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -18,4 +16,4 @@ tcp:
   - name: http
     type: regex
     regex:
-    - '^HTTP/1\.1 200 OK\r\nServer: Motion-httpd/([\d.]+)\r\n'
+    - '^HTTP/1\.1 500 Internal Server Error\r\nDate: \w+ \w+ \d\d \d\d:\d\d:\d\d \w+ \d\d\d\d\r\nServer: JOSM RemoteControl\r\nContent-type: text/html\r\nAccess-Control-Allow-Origin: \*\r\n'

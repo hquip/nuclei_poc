@@ -1,20 +1,21 @@
 id: domain
 info:
-  name: Cloudflare public DNS
+  name: Mikrotik DNS
   author: nmap,cn-kali-team
   tags: detect,tech,domain,service
   severity: info
   metadata:
-    rarity: 1
+    device_type: router
+    rarity: 4
 tcp:
-- name: dnsversion-bind-req
+- name: nbtstat
   inputs:
-  - data: \0\x06\x01\0\0\x01\0\0\0\0\0\0\x07version\x04bind\0\0\x10\0\x03
+  - data: \x80\xf0\0\x10\0\x01\0\0\0\0\0\0\x20\x43\x4bAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\0\0\x21\0\x01
   host:
   - '{{Hostname}}'
-  port: 53,1967,2967,26198
+  port: '137'
   extractors:
   - name: domain
     type: regex
     regex:
-    - ^(?:..)?\0\x06\x81\x84\0\x01\0\0\0\0\0\0\x07version\x04bind\0\0\x10\0\x03
+    - ^\x80\xf0\x81\x83\0\x01\0\0\0\0\0\0 ckaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\0\0!\0\x01

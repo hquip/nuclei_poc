@@ -1,13 +1,12 @@
 id: smtp-proxy
 info:
-  name: Scalix smtp relay
+  name: SnertSoft Barricade MX smtp proxy
   author: nmap,cn-kali-team
   tags: detect,tech,smtp-proxy,service
   severity: info
   metadata:
     hostname: $1
     rarity: 0
-    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -18,4 +17,4 @@ tcp:
   - name: smtp-proxy
     type: regex
     regex:
-    - ^220 ([-\w_.]+) ESMTP Scalix SMTP Relay ([\d.]+); .*\r\n
+    - '^220-([\w._-]+) ESMTP Welcome to smtpf #\d+ \(\w+\)\r\n220 Copyright 2006, 2011 by SnertSoft\. All rights reserved\.\r\n'

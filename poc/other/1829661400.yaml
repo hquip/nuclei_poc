@@ -1,11 +1,11 @@
 id: smtp
 info:
-  name: Mail Matrix smtpd
+  name: Hotmail Popper hotmail to smtp gateway
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
   metadata:
-    operating_system: Windows
+    hostname: $1
     rarity: 0
 tcp:
 - name: 'null'
@@ -17,4 +17,4 @@ tcp:
   - name: smtp
     type: regex
     regex:
-    - ^220 mailmatrix SMTP Server \(Mail Matrix Server\) ready
+    - ^220 ([-/.+\w]+) SMTP ready to roll\r\n

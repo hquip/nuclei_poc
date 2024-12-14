@@ -1,15 +1,17 @@
 id: pop3-proxy
 info:
-  name: Zarafa pop3 proxy
+  name: AVG pop3 proxy
   author: nmap,cn-kali-team
   tags: detect,tech,pop3-proxy,service
   severity: info
   metadata:
-    operating_system: Unix
-    product: zarafa
+    hostname: $1
+    operating_system: Windows
+    product: anti-virus
     rarity: 0
-    vendor: zarafa
+    vendor: avg
     verified: true
+    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +22,4 @@ tcp:
   - name: pop3-proxy
     type: regex
     regex:
-    - ^\+OK Zarafa POP3 gateway ready\r\n
+    - ^\+OK AVG POP3 Proxy Server <[\d.]+@([-\w_.]+)> ([\d.]+)/[\d.]+ \[[\d/.]+\]\r\n

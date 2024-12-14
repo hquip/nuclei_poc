@@ -1,13 +1,12 @@
 id: pop3
 info:
-  name: JAMES pop3d
+  name: mySHN pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
-    hostname: $1
     rarity: 0
-    version: $2
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -18,4 +17,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK ([-\w_.]+) POP3 server \(JAMES POP3 Server ([\w.]+)\) ready \r\n
+    - ^\+OK mySHN server v([\d.]+) ready\r\n

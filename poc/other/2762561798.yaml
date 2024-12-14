@@ -1,11 +1,12 @@
 id: telnet
 info:
-  name: Datacom $1 router telnetd
+  name: HP AdvanceStack $1 Ethernet hub SNMP Module telnetd
   author: nmap,cn-kali-team
   tags: detect,tech,telnet,service
   severity: info
   metadata:
-    device_type: router
+    device_type: hub
+    info: ROM $2; EEPROM $3; HW $4
     rarity: 0
 tcp:
 - name: 'null'
@@ -17,4 +18,4 @@ tcp:
   - name: telnet
     type: regex
     regex:
-    - ^\xff\xfd\x01\xff\xfd\x1f\xff\xfd!\xff\xfb\x01\xff\xfb\x03\x1b\[2J\x1b\[H\x1b\[2J\x1b\[H ------------------------------------------------------------------------------\r\r\n                                D A T A C O M\r\r\n +(DM\w+) - Minimux Router\r\r\n
+    - '^\xff\xfb\x03\xff\xfb\x01\r\n\r\n\x07HP (\w+)  Ethernet SNMP Module\r\n ROM B\.([\d.]+)\r\n EEPROM A\.([\d.]+)\r\n HW B\.([\d.]+)\r\n\r\nEnter password: '
