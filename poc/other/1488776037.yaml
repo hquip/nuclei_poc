@@ -1,11 +1,15 @@
 id: http
 info:
-  name: Finchsync PocketPC Synchonizer httpd
+  name: IBM WebSphere Application Server
   author: nmap,cn-kali-team
   tags: detect,tech,http,service
   severity: info
   metadata:
+    product: websphere_application_server
     rarity: 0
+    vendor: ibm
+    verified: true
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -16,4 +20,4 @@ tcp:
   - name: http
     type: regex
     regex:
-    - ^HTTP/1\.1 408 Request Timeout\nContent-Length:0\nContent-Type:text/html;charset=UTF-8\n\n$
+    - '^HTTP/1\.1 408 Request Timeout\r\nServer: WebSphere Application Server/([\w._-]+)\r\nContent-Type: text/html\r\nContent-Length: 117\r\n'

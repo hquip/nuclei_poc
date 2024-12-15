@@ -1,16 +1,14 @@
 id: smtp-proxy
 info:
-  name: Trustwave Secure Email Gateway
+  name: I2P Tunnel SMTP proxy
   author: nmap,cn-kali-team
   tags: detect,tech,smtp-proxy,service
   severity: info
   metadata:
-    hostname: $1
-    product: secure_email_gateway
+    product: i2p
     rarity: 0
-    vendor: trustwave
+    vendor: i2p_project
     verified: true
-    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -21,4 +19,4 @@ tcp:
   - name: smtp-proxy
     type: regex
     regex:
-    - ^220 ([\w.-]+) ESMTP Trustwave SEG \(v([\d.]+)\) Ready\r\n
+    - ^220 smtp\.postman\.i2p ESMTP I2PNet Mailservice\r\n

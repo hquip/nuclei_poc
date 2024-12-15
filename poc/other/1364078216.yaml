@@ -1,16 +1,16 @@
 id: nntp
 info:
-  name: Symantec Enterprise Firewall nntpd
+  name: InterNetNews NNRP server
   author: nmap,cn-kali-team
   tags: detect,tech,nntp,service
   severity: info
   metadata:
-    device_type: firewall
-    info: unauthorized
-    product: enterprise_firewall
+    hostname: $1
+    product: inn
     rarity: 0
-    vendor: symantec
+    vendor: isc
     verified: true
+    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -21,4 +21,4 @@ tcp:
   - name: nntp
     type: regex
     regex:
-    - ^201 NNTP server ready \(no posting\)\r\n502 No permission\r\n
+    - ^200 ([-\w._]+) InterNetNews NNRP server INN (.*) ready \(posting ok\)\r\n
