@@ -1,13 +1,11 @@
 id: telnet
 info:
-  name: Network Video Streamer telnetd
+  name: HP H3C SR8808 SecBlade firewall module telnetd
   author: nmap,cn-kali-team
   tags: detect,tech,telnet,service
   severity: info
   metadata:
-    device_type: media device
-    info: 'model: $2'
-    operating_system: Linux $1
+    device_type: firewall
     rarity: 0
 tcp:
 - name: 'null'
@@ -19,4 +17,4 @@ tcp:
   - name: telnet
     type: regex
     regex:
-    - '^\xff\xfd\x01\xff\xfd\x1f\xff\xfd!\xff\xfb\x01\xff\xfb\x03\r\r\n\r\n\rNVS\r\n\rLinux (2\.\d+\.\d+)(?:[\w._-]+)? on a armv\w+ \(\d\d:\d\d:\d\d\)\r\n\r([\w._-]+) login: '
+    - ^\r\n%connection closed by remote host!\0
