@@ -1,11 +1,11 @@
 id: smtp-proxy
 info:
-  name: SonicWALL Email Security smtp proxy
+  name: Zentynal SMTP filter
   author: nmap,cn-kali-team
   tags: detect,tech,smtp-proxy,service
   severity: info
   metadata:
-    info: blacklisted
+    info: SMTP server $1
     rarity: 0
 tcp:
 - name: 'null'
@@ -17,4 +17,4 @@ tcp:
   - name: smtp-proxy
     type: regex
     regex:
-    - ^554 No SMTPd here\r\n
+    - ^421 Cannot establish SSL with SMTP server ([][\w._:-]+), SSL_connect error 336031996\r\n

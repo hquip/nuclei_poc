@@ -1,13 +1,12 @@
 id: imap
 info:
-  name: IMAPMax
+  name: SeattleLab SLMail imapd
   author: nmap,cn-kali-team
   tags: detect,tech,imap,service
   severity: info
   metadata:
     operating_system: Windows
     rarity: 0
-    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -18,4 +17,4 @@ tcp:
   - name: imap
     type: regex
     regex:
-    - ^\* OK IMAP4rev1 SmartMax IMAPMax (\d+) Ready\r\n
+    - ^\* OK Welcome to the SLnet IMAP Service\r\n
