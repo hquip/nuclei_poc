@@ -1,12 +1,11 @@
 id: irc
 info:
-  name: IRCXPRO admin ircd
+  name: iacd ircd
   author: nmap,cn-kali-team
   tags: detect,tech,irc,service
   severity: info
   metadata:
     rarity: 0
-    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -17,4 +16,4 @@ tcp:
   - name: irc
     type: regex
     regex:
-    - ^IRCXPRO ([\w._-]+)\r\nAUTHREQUEST :Authentication Required\r\n
+    - ^PING :42\r\n$

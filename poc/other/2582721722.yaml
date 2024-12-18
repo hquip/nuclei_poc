@@ -1,23 +1,23 @@
 id: http-proxy
 info:
-  name: MikroTik HttpProxy
+  name: I2P anonymizing http proxy
   author: nmap,cn-kali-team
   tags: detect,tech,http-proxy,service
   severity: info
   metadata:
-    device_type: router
-    fallback:
-    - get-request
-    rarity: 5
+    info: Polish
+    product: i2p
+    rarity: 0
+    vendor: i2p_project
+    verified: true
 tcp:
-- name: rtsprequest
+- name: 'null'
   inputs:
-  - data: OPTIONS / RTSP/1.0\r\n\r\n
+  - data: ''
   host:
   - '{{Hostname}}'
-  port: 80,554,3052,3372,5000,7070,8080,10000
   extractors:
   - name: http-proxy
     type: regex
     regex:
-    - '^HTTP/1\.0 400 Bad Request\r\nContent-Length: 103\r\nConnection: close\r\n\r\n<html><body> <h2>Mikrotik HttpProxy</h2>\n\r<hr>\n\r<h2>\n\rError: 400 Bad Request\r\n\r\n</h2>\n\r</body></html>\n\r$'
+    - '(?i)^HTTP/1\.1 403 Bad Protocol\r\n.*<title>(?:I2P )?Ostrzeżenie: protokół inny niż HTTP</title>\r\n<link rel=\"shortcut icon\" href=\"http://proxy\.i2p/themes/console/images/favicon\.ico\" ?>\r\n'

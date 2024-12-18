@@ -1,10 +1,11 @@
 id: pop3
 info:
-  name: Courier pop3d
+  name: Qualcomm Qpopper pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
+    hostname: $1
     rarity: 0
 tcp:
 - name: 'null'
@@ -16,4 +17,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK Hello there\.\r\n$
+    - ^\+OK ready  <\d{1,5}\.10\d{8}@([-.\w]+)>\r\n

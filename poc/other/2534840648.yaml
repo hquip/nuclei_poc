@@ -1,14 +1,13 @@
 id: imap
 info:
-  name: Oracle Communications Message Exchange imapd
+  name: Lotus Domino imapd
   author: nmap,cn-kali-team
   tags: detect,tech,imap,service
   severity: info
   metadata:
-    info: built $2
-    product: communications_unified
+    product: lotus_domino
     rarity: 0
-    vendor: oracle
+    vendor: ibm
     verified: true
     version: $1
 tcp:
@@ -21,4 +20,4 @@ tcp:
   - name: imap
     type: regex
     regex:
-    - ^\* OK \[CAPABILITY IMAP4 IMAP4rev1 ACL QUOTA LITERAL\+ NAMESPACE UIDPLUS CHILDREN LANGUAGE XSENDER X-NETSCAPE XSERVERINFO AUTH=PLAIN\] Messaging Multiplexor \(Oracle Communications Messaging Exchange Server ([\w._-]+) \(built (\w+ +\d+ \d+)\)\)\r\n
+    - ^\* OK Domino IMAP4 Server Build V([\w_]+ Beta \w+) ready .*\r\n
