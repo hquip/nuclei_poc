@@ -1,12 +1,16 @@
 id: smtp
 info:
-  name: Canon printer smtp server
+  name: MDaemon smtpd
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
   metadata:
-    device_type: printer
+    info: Server too busy error
+    operating_system: Windows
+    product: mdaemon
     rarity: 0
+    vendor: altn
+    verified: true
 tcp:
 - name: 'null'
   inputs:
@@ -17,4 +21,4 @@ tcp:
   - name: smtp
     type: regex
     regex:
-    - ^220 Canon[-.\w]+ ESMTP Ready\r\n
+    - ^421 Sorry, SMTP server too busy right now \(193\); try again later\r\n

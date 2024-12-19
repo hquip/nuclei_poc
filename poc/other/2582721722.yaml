@@ -1,23 +1,26 @@
 id: http-proxy
 info:
-  name: I2P anonymizing http proxy
+  name: Microsoft ISA Server http proxy
   author: nmap,cn-kali-team
   tags: detect,tech,http-proxy,service
   severity: info
   metadata:
-    info: Polish
-    product: i2p
-    rarity: 0
-    vendor: i2p_project
+    fallback:
+    - get-request
+    operating_system: Windows
+    product: isa_server
+    rarity: 5
+    vendor: microsoft
     verified: true
 tcp:
-- name: 'null'
+- name: rtsprequest
   inputs:
-  - data: ''
+  - data: OPTIONS / RTSP/1.0\r\n\r\n
   host:
   - '{{Hostname}}'
+  port: 80,554,3052,3372,5000,7070,8080,10000
   extractors:
   - name: http-proxy
     type: regex
     regex:
-    - '(?i)^HTTP/1\.1 403 Bad Protocol\r\n.*<title>(?:I2P )?Ostrzeżenie: protokół inny niż HTTP</title>\r\n<link rel=\"shortcut icon\" href=\"http://proxy\.i2p/themes/console/images/favicon\.ico\" ?>\r\n'
+    - ^HTTP/1\.1 400 Bad Request \( The data is invalid\.  \)\r\n
