@@ -1,6 +1,6 @@
 id: irc
 info:
-  name: Dancer ircd
+  name: ratbox, charybdis, or ircd-seven ircd
   author: nmap,cn-kali-team
   tags: detect,tech,irc,service
   severity: info
@@ -16,4 +16,4 @@ tcp:
   - name: irc
     type: regex
     regex:
-    - ^NOTICE AUTH :\*\*\* Looking up your hostname\.\.\.\r\nNOTICE AUTH :\*\*\* Couldn't look up your hostname\r\n
+    - ^ERROR :Reconnecting too fast, throttled\.\r\n$

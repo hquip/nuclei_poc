@@ -1,13 +1,12 @@
 id: telnet
 info:
-  name: Nortel Passport 8010 router telnetd
+  name: LG Aria LDK-300 PBX telnetd
   author: nmap,cn-kali-team
   tags: detect,tech,telnet,service
   severity: info
   metadata:
-    device_type: router
+    device_type: PBX
     rarity: 0
-    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -18,4 +17,4 @@ tcp:
   - name: telnet
     type: regex
     regex:
-    - '^\xff\xfb\x01\r\n\r\*+\n\r\r\* Copyright \(c\) \d+ Nortel Networks, Inc\.  \*\n\r\r\* All Rights Reserved +\*\n\r\r\* Passport 8010 +\*\n\r\r\* Software Release ([\d.]+) '
+    - ^Welcome to LDK-300 system\. Press enter\.\r\nYour address is

@@ -1,11 +1,12 @@
 id: pop3
 info:
-  name: coremail pop3d
+  name: NewsGator Enterprise Server pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
     rarity: 0
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -16,4 +17,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK Welcome to coremail Mail Pop3 Server \(gzidcs\[[0-9a-f]{32}s\]\)\r\n$
+    - ^\+OK Welcome NewsGator Online Services POP3 Server version ([\w._-]+)\r\n$
