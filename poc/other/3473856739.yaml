@@ -1,15 +1,16 @@
 id: vnc
 info:
-  name: Microsoft Virtual Server remote control
+  name: RealVNC Enterprise
   author: nmap,cn-kali-team
   tags: detect,tech,vnc,service
   severity: info
   metadata:
-    operating_system: Windows
-    product: virtual_server
+    info: protocol 5.0
+    product: realvnc
     rarity: 0
-    vendor: microsoft
+    vendor: realvnc
     verified: true
+    version: 5.3 or later
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +21,4 @@ tcp:
   - name: vnc
     type: regex
     regex:
-    - ^RFB 103\.006\n
+    - ^RFB 005\.000\n

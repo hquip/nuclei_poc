@@ -1,15 +1,13 @@
 id: pop3
 info:
-  name: Lotus Domino POP3 server
+  name: IdeaPop3Server pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
-    product: lotus_domino
+    hostname: $1
     rarity: 0
-    vendor: ibm
-    verified: true
-    version: $1
+    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +18,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - '^\+OK Lotus Notes POP3 server version ([-.\w]+) ready on '
+    - ^\+OK ([-\w_.]+)\s+IdeaPop3Server ([^\s]+) ready\.\r\n
