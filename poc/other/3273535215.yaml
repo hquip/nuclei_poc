@@ -1,13 +1,14 @@
 id: pop3
 info:
-  name: Mirapoint RazorGate pop3d
+  name: PMDF pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
-    hostname: $1
+    hostname: $2
+    operating_system: OpenVMS
     rarity: 0
-    version: $2
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -18,4 +19,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK ([-\w_.]+) Mirapoint POP3 ([\d.]+) server ready\r\n
+    - ^\+OK POP3D\(\*\) Server PMDFV([\w._-]+) at .* <\w+@([\w._-]+)>\r\n

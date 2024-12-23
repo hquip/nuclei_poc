@@ -1,14 +1,15 @@
 id: sieve
 info:
-  name: Dovecot Pigeonhole sieve
+  name: Cyrus timsieved
   author: nmap,cn-kali-team
   tags: detect,tech,sieve,service
   severity: info
   metadata:
-    info: Ubuntu
-    operating_system: Linux
+    info: included w/cyrus imap
+    product: cyrus_imap_server
     rarity: 0
-    version: $1
+    vendor: cmu
+    verified: true
 tcp:
 - name: 'null'
   inputs:
@@ -19,4 +20,4 @@ tcp:
   - name: sieve
     type: regex
     regex:
-    - ^\"IMPLEMENTATION\" \"Dovecot \(Ubuntu\) Pigeonhole\"\r\n\"SIEVE\" \"[\w._;-]+(?:\s+[\w._;-]+)*\"\r\n\"NOTIFY\" \"mailto\"\r\n\"SASL\" \"[\w._;-]*(?:\s+[\w._;-]+)*\"\r\n\"STARTTLS\"\r\n\"VERSION\" \"([\w._-]+)\"\r\nOK \"[^"]*\"\r\n$
+    - '^NO Fatal error: Error initializing actions\r\n$'
