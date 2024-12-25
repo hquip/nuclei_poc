@@ -1,21 +1,20 @@
 id: printer
 info:
-  name: SGI IRIX lprsrv
+  name: lpsched
   author: nmap,cn-kali-team
   tags: detect,tech,printer,service
   severity: info
   metadata:
-    operating_system: IRIX
-    rarity: 6
+    hostname: $1
+    rarity: 0
 tcp:
-- name: lpdstring
+- name: 'null'
   inputs:
-  - data: \x01default\n
+  - data: ''
   host:
   - '{{Hostname}}'
-  port: 515,2947,3333,32211,19350
   extractors:
   - name: printer
     type: regex
     regex:
-    - '^[-.\w]+: lpsched: unknown printer\n$'
+    - '^([-\w_.]+): lpsched: Malformed from address\n'

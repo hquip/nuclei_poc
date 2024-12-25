@@ -1,15 +1,13 @@
 id: pop3
 info:
-  name: Microsoft Exchange 2007 pop3d
+  name: WinWebMail pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
     operating_system: Windows
-    product: exchange_server
     rarity: 0
-    vendor: microsoft
-    verified: true
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +18,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK Microsoft Exchange Server 2007 POP3 service ready\r\n
+    - ^\+OK POP3 on WinWebMail \[([-\w_.]+)\] ready\.  http://www\.winwebmail\.net\r\n
