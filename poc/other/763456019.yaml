@@ -1,25 +1,20 @@
 id: smtp
 info:
-  name: HP Sendmail
+  name: OpenBSD spamd
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
   metadata:
-    hostname: $1
-    operating_system: HP-UX
-    product: sendmail
-    rarity: 0
-    vendor: hp
-    verified: true
-    version: $2
+    rarity: 8
 tcp:
-- name: 'null'
+- name: hello
   inputs:
-  - data: ''
+  - data: EHLO\r\n
   host:
   - '{{Hostname}}'
+  port: 25,587,3025
   extractors:
   - name: smtp
     type: regex
     regex:
-    - ^220 ([-\w_.]+) HP Sendmail \(([\d/.]+) .*\) ready at .*\r\n
+    - ^220 $
