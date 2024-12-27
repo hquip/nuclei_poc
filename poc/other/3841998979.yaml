@@ -1,14 +1,15 @@
 id: nntp
 info:
-  name: Colobus nntpd
+  name: Kerio Connect nntpd
   author: nmap,cn-kali-team
   tags: detect,tech,nntp,service
   severity: info
   metadata:
-    hostname: $1
-    info: posting ok
+    product: connect
     rarity: 0
-    version: $2
+    vendor: kerio
+    verified: true
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -19,4 +20,4 @@ tcp:
   - name: nntp
     type: regex
     regex:
-    - ^200 ([-\w_.]+) - colobus ([\d.]+) ready - \(posting ok\)\.\r\n
+    - ^200 Kerio Connect ([\w._-]+) NNTP server ready\r\n
