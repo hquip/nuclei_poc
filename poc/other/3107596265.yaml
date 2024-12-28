@@ -1,12 +1,15 @@
 id: ftp-proxy
 info:
-  name: CCProxy ftp proxy
+  name: McAfee Web Gateway ftp proxy
   author: nmap,cn-kali-team
   tags: detect,tech,ftp-proxy,service
   severity: info
   metadata:
-    operating_system: Windows
+    product: web_gateway
     rarity: 0
+    vendor: mcafee
+    verified: true
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -17,4 +20,4 @@ tcp:
   - name: ftp-proxy
     type: regex
     regex:
-    - '^220-CCProxy FTP Service\r\n220-you need to input userid@site as login name\.\r\n220 Example: user anonymous@ftp\.netscape\.com\r\n'
+    - ^220 McAfee Web Gateway ([\d.]+ (?:- )?build:? \d+)\r\n

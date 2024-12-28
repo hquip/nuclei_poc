@@ -1,20 +1,22 @@
 id: http
 info:
-  name: D-Link DGS-1500 series switch httpd
+  name: Trend Micro OfficeScan Antivirus http config
   author: nmap,cn-kali-team
   tags: detect,tech,http,service
   severity: info
   metadata:
-    device_type: switch
-    rarity: 0
+    fallback:
+    - get-request
+    rarity: 9
 tcp:
-- name: 'null'
+- name: office-scan
   inputs:
-  - data: ''
+  - data: GET /?CAVIT HTTP/1.1\r\n\r\n
   host:
   - '{{Hostname}}'
+  port: '12345'
   extractors:
   - name: http
     type: regex
     regex:
-    - '^\r\n<HTML>\n<HEAD><TITLE>Error Observed</TITLE></HEAD>\n<BODY BGCOLOR=white>\n<H1>Error Observed</H1>\n<P>Error: 400 Bad Request</BODY></HTML>'
+    - '^HTTP/1.0 \d\d\d .*\r\nServer: OfficeScan Client'
