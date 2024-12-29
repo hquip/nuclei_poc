@@ -1,11 +1,12 @@
 id: ssh
 info:
-  name: Mocana embedded SSH
+  name: Sun StorEdge 3511 sshd
   author: nmap,cn-kali-team
   tags: detect,tech,ssh,service
   severity: info
   metadata:
-    info: protocol 2.0
+    device_type: storage-misc
+    info: protocol $1; IFT SSH
     rarity: 0
 tcp:
 - name: 'null'
@@ -17,4 +18,4 @@ tcp:
   - name: ssh
     type: regex
     regex:
-    - ^SSH-2\.0-Mocana SSH\r\n
+    - ^SSH-([\d.]+)-IFT SSH server BUILD_VER\n

@@ -1,15 +1,16 @@
 id: pop3
 info:
-  name: Novell NetMail pop3d
+  name: Cyrus pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
     hostname: $1
-    operating_system: Unix
-    product: netmail
+    info: Debian
+    operating_system: Linux
+    product: cyrus_imap_server
     rarity: 0
-    vendor: novell
+    vendor: cmu
     verified: true
     version: $2
 tcp:
@@ -22,4 +23,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - '^\+OK ([-.+\w]+) NetMail POP3 Agent \$Re..sion: ([\d.]+) \$\r\n'
+    - ^\+OK ([-\w_.]+) Cyrus POP3 v(\S+?)[-_]?Debian\S+ server ready

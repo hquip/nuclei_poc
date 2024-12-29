@@ -1,14 +1,16 @@
 id: ldap
 info:
-  name: Microsoft Windows Active Directory LDAP
+  name: VMware vCenter or PSC LDAP
   author: nmap,cn-kali-team
   tags: detect,tech,ldap,service
   severity: info
   metadata:
-    hostname: $1
-    info: 'Domain: $3.$4, Site: $2'
-    operating_system: Windows
+    hostname: $2
+    product: server
     rarity: 6
+    vendor: vmware
+    verified: true
+    version: PSCv $1
 tcp:
 - name: ldapsearch-req
   inputs:
@@ -20,4 +22,4 @@ tcp:
   - name: ldap
     type: regex
     regex:
-    - (?i)^0\x84\0\0..\x02\x01.*dsServiceName1\x84\0\0\0.\x04.CN=NTDS\x20Settings,CN=([^,]+),CN=Servers,CN=([^,]+),CN=Sites,CN=Configuration,DC=([^,]+),DC=([^,]+)0\x84\0
+    - (?i)^0\x82\x05.\x02\x01.*vmwPlatformServicesControllerVersion1\x07\x04\x05([\d.]+)0.\x04.*\nserverName1.\x04.cn=([^,.]+)
