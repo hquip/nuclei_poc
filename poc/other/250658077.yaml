@@ -1,24 +1,20 @@
 id: printer
 info:
-  name: Cirrato lpd
+  name: lpd
   author: nmap,cn-kali-team
   tags: detect,tech,printer,service
   severity: info
   metadata:
-    info: with PayEx support
-    product: cirrato
-    rarity: 6
-    vendor: cirrato
-    verified: true
+    hostname: $1
+    rarity: 0
 tcp:
-- name: lpdstring
+- name: 'null'
   inputs:
-  - data: \x01default\n
+  - data: ''
   host:
   - '{{Hostname}}'
-  port: 515,2947,3333,32211,19350
   extractors:
   - name: printer
     type: regex
     regex:
-    - ^Cirrato printing service \(with PayEx support\)\0
+    - '^([-\w_.]+): lpd: hostname for your address \([\d.]+\) unknown\n'

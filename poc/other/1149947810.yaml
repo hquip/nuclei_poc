@@ -1,16 +1,12 @@
 id: smtp
 info:
-  name: Exim smtpd
+  name: NetBox smtpd
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
   metadata:
     hostname: $1
-    product: exim
     rarity: 0
-    vendor: exim
-    verified: true
-    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -21,4 +17,4 @@ tcp:
   - name: smtp
     type: regex
     regex:
-    - ^220[- ]([^\r\n]+) ESMTP Exim (V?\d\S+)
+    - ^220 ([\w_.-]+) ESMTP NetBox\(tm\)\r\n

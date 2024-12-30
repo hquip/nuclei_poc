@@ -1,14 +1,15 @@
 id: ftp-proxy
 info:
-  name: Squid ftp proxy
+  name: McAfee Web Gateway ftp proxy
   author: nmap,cn-kali-team
   tags: detect,tech,ftp-proxy,service
   severity: info
   metadata:
-    product: squid
+    product: web_gateway
     rarity: 0
-    vendor: squid-cache
+    vendor: mcafee
     verified: true
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -19,4 +20,4 @@ tcp:
   - name: ftp-proxy
     type: regex
     regex:
-    - ^220 server ready - login please\r\n
+    - ^220 McAfee Web Gateway ([\d.]+ (?:- )?build:? \d+)\r\n
