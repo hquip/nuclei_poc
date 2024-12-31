@@ -1,13 +1,12 @@
 id: http
 info:
-  name: MiniShare http interface
+  name: Konica Minolta bizhub printer http config
   author: nmap,cn-kali-team
   tags: detect,tech,http,service
   severity: info
   metadata:
-    operating_system: Windows
+    device_type: printer
     rarity: 0
-    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -18,4 +17,4 @@ tcp:
   - name: http
     type: regex
     regex:
-    - (?i)^HTTP/1\.1 503 Service unavailable\r\n.*<a href=\"http://minishare\.sourceforge\.net/\">MiniShare ([\w._-]+)</a>
+    - '^HTTP/1\.1 408 Request Time-Out\r\nConnection: Close\r\n\r\n$'
