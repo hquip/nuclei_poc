@@ -1,12 +1,14 @@
 id: telnet
 info:
-  name: Iskraemeco P2CC smart electrical meter readout telnetd
+  name: Lancom $1 VPN router telnetd
   author: nmap,cn-kali-team
   tags: detect,tech,telnet,service
   severity: info
   metadata:
-    device_type: power-misc
+    device_type: router
+    info: 'serial number: $3'
     rarity: 0
+    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -17,4 +19,4 @@ tcp:
   - name: telnet
     type: regex
     regex:
-    - '^\*+ ISKRAEMECO \*+\r\n\*+ P2cc Consereth Communicator \*+\r\nLogin:    '
+    - ^\xff\xfd\x18\xff\xfd\x1f\xff\xfb\x01\xff\xfb\x03\r\n\r\n#\r\n\x7c LANCOM ([\w._+-]+) VPN\r\n\x7c Ver\. ([\w._-]+ / \d\d\.\d\d\.\d\d\d\d / [\w._/-]+)\r\n\x7c SN\.  (\d+)\r\n
