@@ -1,15 +1,13 @@
 id: pop3
 info:
-  name: Citadel pop3d
+  name: MailMax PopMax pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
-    hostname: $1
-    product: ux
+    operating_system: Windows
     rarity: 0
-    vendor: citadel
-    verified: true
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +18,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK Citadel POP3 server <\d+@([-\w_.]+)>\r\n
+    - ^\+OK [-\w_.]+ PopMax version ([\d. ]+) POP3 Mail Server Ready, Willing, and Waiting\r\n

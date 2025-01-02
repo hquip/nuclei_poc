@@ -1,13 +1,17 @@
 id: smtp
 info:
-  name: PowerMTA smtpd
+  name: Sendmail
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
   metadata:
     hostname: $1
+    operating_system: HP-UX $4
+    product: sendmail
     rarity: 0
-    version: $2
+    vendor: sendmail
+    verified: true
+    version: $2 rev $3
 tcp:
 - name: 'null'
   inputs:
@@ -18,4 +22,4 @@ tcp:
   - name: smtp
     type: regex
     regex:
-    - ^220 ([\w._-]+) \(PowerMTA\(TM\) v([\w._-]+)\) dummy ESMTP ready\r\n
+    - '^220[\s-](\S+) E?SMTP Sendmail @\(#\)Sendmail version (\d[^; ]+) - Revision ([\d.]+):: HP-UX([\d.]+)'
