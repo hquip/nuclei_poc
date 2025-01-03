@@ -1,14 +1,16 @@
 id: sip
 info:
-  name: netTALK
+  name: PJSIP pjsua sipd
   author: nmap,cn-kali-team
   tags: detect,tech,sip,service
   severity: info
   metadata:
-    device_type: phone
     fallback:
     - get-request
+    info: 'arch: $3'
+    operating_system: Windows $2
     rarity: 5
+    version: $1
 tcp:
 - name: sipoptions
   inputs:
@@ -20,4 +22,4 @@ tcp:
   - name: sip
     type: regex
     regex:
-    - '^SIP/2\.0 200 OK\r\nVia: SIP/2\.0/TCP nm;received=[\d.]+;branch=foo\r\nCall-ID: 50000\r\nFrom: <sip:nm@nm>;tag=root\r\nTo: <sip:nm2@nm2>;tag=foo\r\nCSeq: 42 OPTIONS\r\nAllow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS\r\nAccept: application/sdp, application/pidf\+xml, application/xpidf\+xml, application/simple-message-summary, message/sipfrag;version=2\.0, application/im-iscomposing\+xml, text/plain\r\nSupported: replaces, 100rel, timer, norefersub\r\nAllow-Events: presence, message-summary, refer\r\nUser-Agent: netTALK\r\n'
+    - '(?i)^SIP/2\.0 200 OK\r\n(?:[^\r\n]+\r\n)*?User-Agent: PJSUA v([\d.]+) win32-([\d.]+)/(ix[\w_]+)'

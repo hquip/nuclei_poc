@@ -1,15 +1,11 @@
 id: pop3
 info:
-  name: Mercury Mail Transport System pop3d
+  name: Qpopper pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
-    hostname: $1
-    product: mercury_mail_transport_system
     rarity: 0
-    vendor: pmail
-    verified: true
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +16,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK <-?[\d.]+@([-\w_.]+)>, POP3 server ready\.\r\n
+    - ^\+OK ready  \r\n$
