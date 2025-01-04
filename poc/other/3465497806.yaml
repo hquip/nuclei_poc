@@ -1,12 +1,13 @@
 id: ftp
 info:
-  name: AXIS $1 Video Server ftpd
+  name: HTC P4000 PDA/Phone ftpd
   author: nmap,cn-kali-team
   tags: detect,tech,ftp,service
   severity: info
   metadata:
+    device_type: PDA
+    operating_system: Windows
     rarity: 0
-    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -17,4 +18,4 @@ tcp:
   - name: ftp
     type: regex
     regex:
-    - ^220 AXIS (\w+) Video Server (\d\S+) \(.*\) ready\.\r\n
+    - ^220 Welcome to Mobile File Service\r\n\r\n
