@@ -1,14 +1,14 @@
 id: smtp
 info:
-  name: Axigen smtpd
+  name: Symantec Messaging Gateway smtpd
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
   metadata:
     hostname: $1
-    product: axigen_mail_server
+    product: messaging_gateway
     rarity: 0
-    vendor: gecad
+    vendor: symantec
     verified: true
 tcp:
 - name: 'null'
@@ -20,4 +20,4 @@ tcp:
   - name: smtp
     type: regex
     regex:
-    - ^220 ([-\w_.]+) Axigen ESMTP ready\r\n
+    - ^220 ([\w._-]+) ESMTP Symantec Messaging Gateway\r\n

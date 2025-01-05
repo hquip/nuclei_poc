@@ -1,15 +1,14 @@
 id: pop3
 info:
-  name: CommuniGate Pro pop3d
+  name: Eudora Worldmail pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
-    info: access denied
-    product: communigate_pro
+    hostname: $2
+    operating_system: Windows
     rarity: 0
-    vendor: stalker
-    verified: true
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +19,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^-ERR access from your network is denied\r\n$
+    - ^\+OK WorldMail POP3 Server ([-\w_.]+) Ready <[\d.]+@([-\w_.]+)>\r\n
