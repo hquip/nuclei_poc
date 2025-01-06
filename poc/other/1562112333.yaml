@@ -20,4 +20,4 @@ tcp:
   - name: irc
     type: regex
     regex:
-    - '^ERROR :Closing Link: \[[\d.]+\] \(Throttled: Reconnecting too fast\) -Email ([-\w_.]+@[-\w_.]+) for more information\.'
+    - '^ERROR :Closing Link: \[[\d.]+\] \(Throttled: Reconnecting too fast\) -Email (.*) for more information\.'

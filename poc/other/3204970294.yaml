@@ -1,12 +1,11 @@
 id: printer
 info:
-  name: QMC DeskLaser printer
+  name: AIX lpd
   author: nmap,cn-kali-team
   tags: detect,tech,printer,service
   severity: info
   metadata:
-    device_type: printer
-    info: Status $1
+    operating_system: AIX
     rarity: 0
 tcp:
 - name: 'null'
@@ -18,4 +17,4 @@ tcp:
   - name: printer
     type: regex
     regex:
-    - ^Printer Status ---> (.*)                    \nno entries\n
+    - ^\d+-201 ill-formed FROM address\.$

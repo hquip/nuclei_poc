@@ -1,11 +1,12 @@
 id: pop3-proxy
 info:
-  name: DeleGate pop3 proxy
+  name: Trend Micro IMSS virus scanning POP3 proxy
   author: nmap,cn-kali-team
   tags: detect,tech,pop3-proxy,service
   severity: info
   metadata:
     hostname: $2
+    operating_system: Windows
     rarity: 0
     version: $1
 tcp:
@@ -18,4 +19,4 @@ tcp:
   - name: pop3-proxy
     type: regex
     regex:
-    - ^\+OK Proxy-POP server \(DeleGate/([\d.]+) by ysato AT delegate DOT org\) at ([-\w_.]+) starting\.\r\n
+    - ^\+OK TrendMicro IMSS (\d[-.\w ]+) POP3 Proxy at ([-.\w]+)\r\n

@@ -1,15 +1,14 @@
 id: imap
 info:
-  name: Perdition imapd
+  name: Eudora Internet Mail Server X imapd
   author: nmap,cn-kali-team
   tags: detect,tech,imap,service
   severity: info
   metadata:
     hostname: $1
-    product: perdition
+    operating_system: Mac OS X
     rarity: 0
-    vendor: horms
-    verified: true
+    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +19,4 @@ tcp:
   - name: imap
     type: regex
     regex:
-    - ^\* OK \[CAPABILITY IMAP4 [^]]*\] perdition ready on ([\w._-]+) [a-f\d]+\r\n
+    - ^\* OK ([-\w_.]+) running Eudora Internet Mail Server X ([\d.]+)\r\n
