@@ -1,13 +1,14 @@
 id: smtp
 info:
-  name: Bluecat Meridius smtpd
+  name: Mercury/32 smtpd
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
   metadata:
-    device_type: firewall
     hostname: $1
+    operating_system: Windows
     rarity: 0
+    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -18,4 +19,4 @@ tcp:
   - name: smtp
     type: regex
     regex:
-    - '^220-([-\w_.]+) Bluecat Networks Inc\. Meridius Security Gateway\r\n220 '
+    - ^220 ([-.+\w]+) Mercury/32 v(\d[-.\w]+) ESMTP server ready\.\r\n

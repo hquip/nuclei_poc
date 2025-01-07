@@ -1,16 +1,14 @@
 id: ftp
 info:
-  name: Titan ftpd
+  name: Dreambox ftpd
   author: nmap,cn-kali-team
   tags: detect,tech,ftp,service
   severity: info
   metadata:
-    info: Evaluation period expired
-    operating_system: Windows
-    product: titan_ftp_server
+    device_type: media device
+    info: PLi image
+    operating_system: Linux
     rarity: 0
-    vendor: southrivertech
-    verified: true
 tcp:
 - name: 'null'
   inputs:
@@ -21,4 +19,4 @@ tcp:
   - name: ftp
     type: regex
     regex:
-    - ^421-\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+=\+\r\n421-The evaluation period for this Titan FTP Server has expired\.\r\n
+    - ^220 Welcome to the PLi dreambox FTP server\r\n

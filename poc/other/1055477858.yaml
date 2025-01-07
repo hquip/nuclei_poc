@@ -1,13 +1,17 @@
 id: http-proxy
 info:
-  name: HTTP Replicator proxy
+  name: Microsoft ISA Server http proxy
   author: nmap,cn-kali-team
   tags: detect,tech,http-proxy,service
   severity: info
   metadata:
     fallback:
     - get-request
+    operating_system: Windows
+    product: isa_server
     rarity: 5
+    vendor: microsoft
+    verified: true
 tcp:
 - name: rtsprequest
   inputs:
@@ -19,4 +23,4 @@ tcp:
   - name: http-proxy
     type: regex
     regex:
-    - '^HTTP/1\.1 503 Service Unavailable\r\ndate: .*\r\nconnection: close\r\n\r\n<html><body><pre><h1>Service unavailable</h1></pre></body></html>\n'
+    - ^HTTP/1\.1 400 Bad Request \( The data is invalid\.  \)\r\n

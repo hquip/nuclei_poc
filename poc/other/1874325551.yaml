@@ -1,16 +1,15 @@
 id: imap
 info:
-  name: Lotus Domino imapd
+  name: Slackware 3.5 imapd
   author: nmap,cn-kali-team
   tags: detect,tech,imap,service
   severity: info
   metadata:
-    info: 'date: $2'
-    product: lotus_domino
+    hostname: $1
+    info: time zone $3
+    operating_system: Linux
     rarity: 0
-    vendor: ibm
-    verified: true
-    version: $1
+    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -21,4 +20,4 @@ tcp:
   - name: imap
     type: regex
     regex:
-    - ^\* OK Domino IMAP4 Server Release (\d[-.\w ]+) +ready +(.*)\r\n
+    - ^\* OK ([\w._-]+) IMAP2bis Service ([\w._()-]+) at .* ([-+]\d+)
