@@ -1,14 +1,16 @@
 id: ssh
 info:
-  name: Radware Linkproof SSH
+  name: Dropbear sshd
   author: nmap,cn-kali-team
   tags: detect,tech,ssh,service
   severity: info
   metadata:
-    device_type: terminal server
     info: protocol $1
+    operating_system: IPC@CHIP-RTOS $2
+    product: dropbear_ssh_server
     rarity: 0
-    version: $2
+    vendor: matt_johnston
+    verified: true
 tcp:
 - name: 'null'
   inputs:
@@ -19,4 +21,4 @@ tcp:
   - name: ssh
     type: regex
     regex:
-    - ^SSH-([\d.]+)-([\d.]+) Radware\r?\n$
+    - ^SSH-([\d.]+)-SC123/SC143 CHIP-RTOS V([\d.]+)\r\n

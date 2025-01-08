@@ -1,12 +1,13 @@
 id: rtsp
 info:
-  name: Live555 Streaming Server rtspd
+  name: Apple AirTunes rtspd
   author: nmap,cn-kali-team
   tags: detect,tech,rtsp,service
   severity: info
   metadata:
     fallback:
     - get-request
+    operating_system: Mac OS X
     rarity: 5
 tcp:
 - name: rtsprequest
@@ -19,4 +20,4 @@ tcp:
   - name: rtsp
     type: regex
     regex:
-    - '^RTSP/1\.0 400 Bad Request\r\nDate: .*\r\nAllow: OPTIONS, DESCRIBE, SETUP, TEARDOWN, PLAY, PAUSE, SET_PARAMETER\r\n\r\n'
+    - ^RTSP/1\.0 400 Bad Request\r\n\r\n$
