@@ -1,15 +1,13 @@
 id: ftp
 info:
-  name: Xerox FreeFlow Accxess ftpd
+  name: Texas Imperial Software WFTPD
   author: nmap,cn-kali-team
   tags: detect,tech,ftp,service
   severity: info
   metadata:
-    device_type: print server
-    product: freeflow_print_server
+    operating_system: Windows
     rarity: 0
-    vendor: xerox
-    verified: true
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -20,4 +18,4 @@ tcp:
   - name: ftp
     type: regex
     regex:
-    - ^220 FreeFlow Accxes FTP server ready\r\n
+    - (?i)^220.*\r\n220 WFTPD (\d[-.\w]+) service \(by Texas Imperial Software\) ready for new user\r\n
