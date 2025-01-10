@@ -1,11 +1,14 @@
 id: pop3
 info:
-  name: Tobit David.fx pop3d
+  name: Dovecot pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
+    product: dovecot
     rarity: 0
+    vendor: dovecot
+    verified: true
 tcp:
 - name: 'null'
   inputs:
@@ -16,4 +19,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK David\.fx Mail Access Server ready \(Tobit\.Software, Germany\)\r\n
+    - \+OK E-mail server ready\.\r\n

@@ -1,16 +1,17 @@
 id: sip
 info:
-  name: Polycom SoundStation $1
+  name: Zoiper VoIP software
   author: nmap,cn-kali-team
   tags: detect,tech,sip,service
   severity: info
   metadata:
-    device_type: VoIP phone
     fallback:
     - get-request
-    info: 'MAC: $3'
+    product: zoiper
     rarity: 5
-    version: $2
+    vendor: securax
+    verified: true
+    version: $1
 tcp:
 - name: sipoptions
   inputs:
@@ -22,4 +23,4 @@ tcp:
   - name: sip
     type: regex
     regex:
-    - '(?i)^SIP/2\.0 200 OK\r\n(?:[^\r\n]+\r\n)*?User-Agent: PolycomSoundStationIP-SSIP_(\d+)-UA/([\d.]+)_(\w+)\r\n'
+    - '(?i)^SIP/2\.0 200 OK\r\n(?:[^\r\n]+\r\n)*?User-Agent: Zoiper (rev\.\d+)\r\n'
