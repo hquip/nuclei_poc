@@ -1,6 +1,6 @@
 id: pop3pw
 info:
-  name: SINA pop3pw
+  name: ApplePasswordServer pop3 password change daemon
   author: nmap,cn-kali-team
   tags: detect,tech,pop3pw,service
   severity: info
@@ -17,4 +17,4 @@ tcp:
   - name: pop3pw
     type: regex
     regex:
-    - ^200 hello and welcome to SchoolsNET SINA poppassd \[([-\d.]+)\]\r\n
+    - '^\+OK ApplePasswordServer (\d[-.\w]+) password server at '
