@@ -1,10 +1,11 @@
 id: ftp
 info:
-  name: Ocean FTPd
+  name: Vivotek 3102 Camera ftpd
   author: nmap,cn-kali-team
   tags: detect,tech,ftp,service
   severity: info
   metadata:
+    device_type: webcam
     rarity: 0
 tcp:
 - name: 'null'
@@ -16,4 +17,4 @@ tcp:
   - name: ftp
     type: regex
     regex:
-    - ^220 Welcome to Ocean FTP Server.
+    - ^220 Welcome to Network Camera FTP Server\r\n
