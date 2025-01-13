@@ -1,13 +1,16 @@
 id: smtp
 info:
-  name: Bluecat Meridius smtpd
+  name: FirstClass submission server
   author: nmap,cn-kali-team
   tags: detect,tech,smtp,service
   severity: info
   metadata:
-    device_type: firewall
     hostname: $1
+    product: firstclass
     rarity: 0
+    vendor: opentext
+    verified: true
+    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -18,4 +21,4 @@ tcp:
   - name: smtp
     type: regex
     regex:
-    - '^220-([-\w_.]+) Bluecat Networks Inc\. Meridius Security Gateway\r\n220 '
+    - ^220 ([\w.-]+) FirstClass SMTP Submission Server v([\d.]+) ready\r\n

@@ -1,16 +1,13 @@
 id: ftp
 info:
-  name: FileZilla ftpd
+  name: multiMAN ftpd
   author: nmap,cn-kali-team
   tags: detect,tech,ftp,service
   severity: info
   metadata:
-    operating_system: Windows
-    product: filezilla_server
+    device_type: game console
+    info: PlayStation 3
     rarity: 0
-    vendor: filezilla-project
-    verified: true
-    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -21,4 +18,4 @@ tcp:
   - name: ftp
     type: regex
     regex:
-    - ^220[- ]FileZilla Server version (\d[-.\w ]+)\r\n
+    - ^220-Playstation 3 FTP    \r\n220 Copyleft \(c\) \d+ multiMAN \(login as anonymous\)    \r\n

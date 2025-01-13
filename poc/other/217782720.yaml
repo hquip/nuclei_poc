@@ -1,12 +1,16 @@
 id: imap
 info:
-  name: VisNetic MailServer imapd
+  name: CommuniGate Pro imapd
   author: nmap,cn-kali-team
   tags: detect,tech,imap,service
   severity: info
   metadata:
+    hostname: $1
+    product: communigate_pro
     rarity: 0
-    version: $1
+    vendor: stalker
+    verified: true
+    version: $2
 tcp:
 - name: 'null'
   inputs:
@@ -17,4 +21,4 @@ tcp:
   - name: imap
     type: regex
     regex:
-    - ^\* OK VisNetic\.MailServer\.v([\w._-]+) IMAP4rev1 .*\r\n
+    - ^\* OK CommuniGate Pro IMAP Server ([-.\w]+) at ([-.\w]+) ready\r\n$

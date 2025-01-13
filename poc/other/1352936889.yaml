@@ -1,12 +1,11 @@
 id: printer
 info:
-  name: Digi IP-to-serial print server lpd
+  name: lpd
   author: nmap,cn-kali-team
   tags: detect,tech,printer,service
   severity: info
   metadata:
-    device_type: print server
-    info: too many connections
+    hostname: $1
     rarity: 0
 tcp:
 - name: 'null'
@@ -18,4 +17,4 @@ tcp:
   - name: printer
     type: regex
     regex:
-    - ^MAX_INCOMING has been exceeded\r\n
+    - '^([-\w_.]+): lpd: hostname for your address \([\d.]+\) unknown\n'
