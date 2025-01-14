@@ -1,10 +1,11 @@
 id: pop3
 info:
-  name: WebSTAR pop3 server
+  name: Cisco VPN 3000 Concentrator pop3d
   author: nmap,cn-kali-team
   tags: detect,tech,pop3,service
   severity: info
   metadata:
+    device_type: security-misc
     rarity: 0
 tcp:
 - name: 'null'
@@ -16,4 +17,4 @@ tcp:
   - name: pop3
     type: regex
     regex:
-    - ^\+OK POP3 server ready <\w{11}>\r\n$
+    - ^\+OK Server Ready\r\n

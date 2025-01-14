@@ -1,10 +1,11 @@
 id: telnet
 info:
-  name: NewCS card sharing system telnetd
+  name: VxWorks telnetd
   author: nmap,cn-kali-team
   tags: detect,tech,telnet,service
   severity: info
   metadata:
+    operating_system: VxWorks
     rarity: 0
 tcp:
 - name: 'null'
@@ -16,4 +17,4 @@ tcp:
   - name: telnet
     type: regex
     regex:
-    - '^\xff\xfb\x01\xff\xfd\"\r\n#####   ####  ##   ##  ####   #####\r\n##  ## ##  ## ## # ## ##  ## ##\r\n##  ## ###### ####### ##      #####\r\n##  ## ##     ####### ##  ##      ##\r\n##  ##  #####  ## ##   ####  ######\r\n     A Butter Team Creation\r\n\r\nPassword :'
+    - '^\xff\xfb\x01\xff\xfb\x03\r\nVxWorks login: '

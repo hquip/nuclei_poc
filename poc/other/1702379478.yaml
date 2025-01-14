@@ -1,6 +1,6 @@
 id: pop3-proxy
 info:
-  name: Avast! anti-virus pop3 proxy
+  name: InterScan VirusWall pop3 proxy
   author: nmap,cn-kali-team
   tags: detect,tech,pop3-proxy,service
   severity: info
@@ -17,4 +17,4 @@ tcp:
   - name: pop3-proxy
     type: regex
     regex:
-    - ^\+OK avast! POP3 proxy ready\.\r\n
+    - ^\+OK InterScan VirusWall POP3 Proxy\r\n

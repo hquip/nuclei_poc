@@ -1,12 +1,13 @@
 id: http
 info:
-  name: svea_httpd
+  name: HP Embedded Web Server remote scan service
   author: nmap,cn-kali-team
   tags: detect,tech,http,service
   severity: info
   metadata:
+    device_type: printer
+    info: no scanner found
     rarity: 0
-    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -17,4 +18,4 @@ tcp:
   - name: http
     type: regex
     regex:
-    - '^\(null\) 400 Bad Request\r\nServer: svea_httpd/([\w._-]+)\r\n'
+    - '^HTTP/1.0 500\r\nContent-type: text/plain\r\n\r\nNo Scan Capable Devices Found\r\n'
