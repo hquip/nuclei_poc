@@ -1,15 +1,14 @@
-id: wp-travel-96821543f7ef684567c7602a8d3aa78b
+id: wp-travel
 
 info:
   name: >
-    WP Travel <= 9.3.1 - Authenticated (Administrator+) Stored Cross-Site Scripting
+    WP Travel <= 7.7.0 - Missing Authorization via Multiple AJAX Actions
   author: topscoder
-  severity: low
+  severity: high
   description: >
     
   reference:
-    - https://github.com/topscoder/nuclei-wordfence-cve
-    - https://www.wordfence.com/threat-intel/vulnerabilities/id/af9e9e8e-2a07-477e-b840-8f7dd8883caa?source=api-scan
+    - https://www.wordfence.com/threat-intel/vulnerabilities/id/d23d2cdf-206e-4714-9753-198519ba737b?source=api-scan
   classification:
     cvss-metrics: 
     cvss-score: 
@@ -18,7 +17,7 @@ info:
     fofa-query: "wp-content/plugins/wp-travel/"
     google-query: inurl:"/wp-content/plugins/wp-travel/"
     shodan-query: 'vuln:'
-  tags: cve,wordpress,wp-plugin,wp-travel,low
+  tags: cve,wordpress,wp-plugin,wp-travel,high
 
 http:
   - method: GET
@@ -56,4 +55,4 @@ http:
 
       - type: dsl
         dsl:
-          - compare_versions(version, '<= 9.3.1')
+          - compare_versions(version, '<= 7.7.0')
