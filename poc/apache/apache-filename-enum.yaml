@@ -8,7 +8,7 @@ info:
   reference:
     - https://hackerone.com/reports/210238
     - https://www.acunetix.com/vulnerabilities/web/apache-mod_negotiation-filename-bruteforcing/
-  tags: apache,misconfig,hackerone
+  tags: apache,misconfig
 
 requests:
   - method: GET

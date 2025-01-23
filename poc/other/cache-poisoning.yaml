@@ -2,7 +2,7 @@ id: cache-poisoning
 
 info:
   name: Cache Poisoning
-  author: melbadry9,xelkomy
+  author: melbadry9 & xelkomy
   severity: info
   reference: |
       - https://blog.melbadry9.xyz/fuzzing/nuclei-cache-poisoning
@@ -10,19 +10,18 @@ info:
   tags: cache
 
 requests:
-  - payloads:
-      Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-    attack: sniper
-    threads: 100
-
-    raw:
+  - raw:
       - |
-        GET / HTTP/1.1
-        Host: {{Subdomains}}
-        X-Forwarded-Prefix: <awali>
-        X-Forwarded-Host: <awali>
-        X-Forwarded-For: <awali>
+        GET /?mel=9 HTTP/1.1
+        X-Forwarded-Prefix: cache.example.com
+        X-Forwarded-Host: cache.example.com
+        X-Forwarded-For: cache.example.com
+
+      - |
+        GET /?mel=9 HTTP/1.1
+
+    req-condition: true
     matchers:
-      - type: word
-        words:
-          - "<awali>"
+      - type: dsl
+        dsl:
+          - 'contains(body_2, "cache.example.com")'

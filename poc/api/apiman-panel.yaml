@@ -1,22 +1,21 @@
 id: apiman-panel
 
 info:
-  name: Apiman Instance Detection Template
+  name: Apiman Login Panel
   author: righettod
   severity: info
-  description: Try to detect the presence of a Apiman instance via the login redirection
+  description: An Apiman instance was detected via the login redirection.
+  reference:
+    - https://www.apiman.io/latest/
+  classification:
+    cwe-id: CWE-200
   tags: panel,apiman
 
 requests:
-  - payloads:
-      Subdomains: /home/mahmoud/Wordlist/AllSubdomains.txt
-    attack: sniper
-    threads: 100
+  - method: GET
+    path:
+      - "{{BaseURL}}/apimanui/api-manager"
 
-    raw:
-      - |
-        GET /apimanui/api-manager HTTP/1.1
-        Host: {{Subdomains}}
     matchers-condition: and
     matchers:
       - type: word
@@ -27,3 +26,5 @@ requests:
       - type: status
         status:
           - 302
+
+# Enhanced by mp on 2022/03/18
