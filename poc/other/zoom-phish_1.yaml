@@ -1,0 +1,35 @@
+id: zoom-phish
+
+info:
+  name: zoom phishing Detection
+  author: rxerium
+  severity: info
+  description: |
+    A zoom phishing website was detected
+  reference:
+    - https://zoom.us
+  metadata:
+    max-request: 1
+  tags: phishing,zoom,osint
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    host-redirects: true
+    max-redirects: 2
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - 'One platform to connect | Zoom'
+
+      - type: status
+        status:
+          - 200
+
+      - type: dsl
+        dsl:
+          - '!contains(host,"zoom.us")'
+# digest: 490a0046304402203800579918b8259caf1247fe85e4dcbb7c8526820abf7cc583f6dc48e3d347d502206655d1c165a1d64b10c3de91293f9e759c030bb458b3875b0c49bac45ac9bdb2:922c64590222798bb761d5b6d8e72950
