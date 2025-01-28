@@ -1,0 +1,35 @@
+id: ticket-master-phish
+
+info:
+  name: ticket master phishing Detection
+  author: rxerium
+  severity: info
+  description: |
+    A ticket-master phishing website was detected
+  reference:
+    - https://ticketmaster.com
+  metadata:
+    max-request: 1
+  tags: phishing,ticket-master,osint
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    host-redirects: true
+    max-redirects: 2
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - 'Buy and sell tickets online for concerts, sports, theater, family and other events near you from Ticketmaster.'
+
+      - type: status
+        status:
+          - 200
+
+      - type: dsl
+        dsl:
+          - '!contains(host,"ticketmaster.com")'
+# digest: 490a0046304402207bf74b0bd00bbaa7e94b8448263143a2833b1757a95d165530b23472cdd227c602204f9a95f33bd235bf05141195942274a17c6e1205e7b81ed0973d3e764b24f215:922c64590222798bb761d5b6d8e72950
