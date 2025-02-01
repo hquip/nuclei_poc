@@ -1,0 +1,35 @@
+id: avg-phish
+
+info:
+  name: avg phishing Detection
+  author: rxerium
+  severity: info
+  description: |
+    An avg phishing website was detected
+  reference:
+    - https://avg.com
+  metadata:
+    max-request: 1
+  tags: phishing,avg,osint
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    host-redirects: true
+    max-redirects: 2
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - 'AVG 2024 | FREE Antivirus, VPN & TuneUp for All Your Devices'
+
+      - type: status
+        status:
+          - 200
+
+      - type: dsl
+        dsl:
+          - '!contains(host,"avg.com")'
+# digest: 4b0a0048304602210092dcf1a1566bf0c699cf7ec15247dea925744fb20443719675af7c149b97cf77022100f38df8850406e1c38b96203d8da62dad0d196c6581d1c87c39ab33dcc4f88a27:922c64590222798bb761d5b6d8e72950
