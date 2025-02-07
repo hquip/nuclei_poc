@@ -5,7 +5,8 @@ info:
   author: ritikchaddha
   severity: high
   metadata:
-    verified: "true"
+    max-request: 2
+    verified: true
     shodan-query: title:"JIRA - JIRA setup"
   tags: misconfig,jira,atlassian,installer
 
