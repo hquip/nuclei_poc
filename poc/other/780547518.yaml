@@ -1,14 +1,11 @@
 id: pop3-proxy
 info:
-  name: IronMail pop3-proxy
+  name: kingate pop3-proxy
   author: nmap,cn-kali-team
   tags: detect,tech,pop3-proxy,service
   severity: info
   metadata:
-    product: ironmail
     rarity: 0
-    vendor: ciphertrust
-    verified: true
 tcp:
 - name: 'null'
   inputs:
@@ -19,4 +16,4 @@ tcp:
   - name: pop3-proxy
     type: regex
     regex:
-    - ^\+OK POP3 Proxy Server Ready\r\n
+    - ^\+OK kingate pop3 proxy\r\n

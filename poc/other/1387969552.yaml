@@ -1,13 +1,12 @@
 id: ftp
 info:
-  name: AXIS 205 Network Video ftpd
+  name: ZyXEL $1 Unified Access Gateway ftpd
   author: nmap,cn-kali-team
   tags: detect,tech,ftp,service
   severity: info
   metadata:
-    device_type: webcam
+    device_type: security-misc
     rarity: 0
-    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -18,4 +17,4 @@ tcp:
   - name: ftp
     type: regex
     regex:
-    - ^220 AXIS 205 version ([\d.]+) \(.*\) ready\.\r\n
+    - ^220 FTP Server \((UAG\d+)\) \[[a-f:\d.]+\]\r\n

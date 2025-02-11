@@ -3,7 +3,7 @@ id: phpmyadmin-unauth-access
 info:
   name: PhpMyAdmin - Unauthenticated Access
   author: pwnhxl
-  severity: critical
+  severity: high
   description: Unauthenticated Access to phpmyadmin dashboard.
   reference:
     - https://www.phpmyadmin.net
