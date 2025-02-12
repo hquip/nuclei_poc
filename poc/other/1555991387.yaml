@@ -1,17 +1,14 @@
 id: nntp
 info:
-  name: INN nntpd
+  name: Microsoft NNTP Service
   author: nmap,cn-kali-team
   tags: detect,tech,nntp,service
   severity: info
   metadata:
-    hostname: $1
-    info: posting ok
-    product: inn
+    info: Spanish
+    operating_system: Windows
     rarity: 0
-    vendor: isc
-    verified: true
-    version: $2
+    version: $1
 tcp:
 - name: 'null'
   inputs:
@@ -22,4 +19,4 @@ tcp:
   - name: nntp
     type: regex
     regex:
-    - ^200 ([-\w_.]+) InterNetNews (?:NNRP )?server INN ([\d.]+) .* ready \(posting ok\)\.\r\n
+    - '^200 Servicio NNTP ([\w._-]+) Version: [\w._-]+ Posting Allowed \r\n'
