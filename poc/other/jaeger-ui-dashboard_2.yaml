@@ -4,11 +4,11 @@ info:
   name: Jaeger UI
   author: dhiyaneshDK
   severity: low
-  metadata:
-    shodan-query: http.title:"Jaeger UI"
   tags: misconfig
+  metadata:
+    shodan-query: 'http.title:"Jaeger UI"'
 
-requests:
+http:
   - method: GET
     path:
       - "{{BaseURL}}/search"
