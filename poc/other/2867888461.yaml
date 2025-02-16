@@ -1,6 +1,6 @@
 id: telnet
 info:
-  name: sysrqd
+  name: Ascentia DataStage telnetd
   author: nmap,cn-kali-team
   tags: detect,tech,telnet,service
   severity: info
@@ -16,4 +16,4 @@ tcp:
   - name: telnet
     type: regex
     regex:
-    - '^sysrqd password: '
+    - '^\xff\xfb\x01Welcome to the DataStage Telnet Server\.\r\0\r\nEnter user name: '
