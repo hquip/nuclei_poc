@@ -1,24 +1,23 @@
-id: f5-big-ip
-info:
-  name: f5-big-ip
-  author: cn-kali-team
-  tags: detect,tech,f5-big-ip
-  severity: info
-  metadata:
-    product: big-ip
-    vendor: f5
-    verified: true
-http:
-- method: GET
-  path:
-  - '{{BaseURL}}/'
-  matchers:
-  - type: word
-    words:
-    - content="f5 networks, inc."
-    case-insensitive: true
-  - type: word
-    words:
-    - 'set-cookie: bigipserverpool'
-    part: header
-    case-insensitive: true
+name: f5-big-ip
+priority: 3
+nuclei_tags:
+  - - bigip
+fingerprint:
+  - path: /
+    request_method: get
+    request_headers: {}
+    request_data: ''
+    status_code: 0
+    headers: {}
+    keyword:
+      - content="F5 Networks, Inc."
+    favicon_hash: []
+  - path: /
+    request_method: get
+    request_headers: {}
+    request_data: ''
+    status_code: 0
+    headers:
+      set-cookie: BIGipServerpool
+    keyword: []
+    favicon_hash: []
