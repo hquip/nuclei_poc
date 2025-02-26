@@ -7,9 +7,9 @@ info:
   metadata:
     verified: true
     shodan-query: ".phpunit.result.cache"
-  tags: config,exposure,devops,files
+  tags: config,exposure,devops
 
-http:
+requests:
   - method: GET
     path:
       - "{{BaseURL}}/.phpunit.result.cache"

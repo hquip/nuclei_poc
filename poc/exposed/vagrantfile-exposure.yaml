@@ -7,9 +7,9 @@ info:
   metadata:
     verified: true
     shodan-query: html:"Vagrantfile"
-  tags: config,exposure,vagrant,oss,files
+  tags: config,exposure,vagrant,oss
 
-http:
+requests:
   - method: GET
     path:
       - "{{BaseURL}}/Vagrantfile"

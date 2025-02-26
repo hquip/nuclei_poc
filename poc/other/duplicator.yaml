@@ -1,59 +1,49 @@
-id: duplicator
+id: wordpress-duplicator
 
 info:
-  name: >
-    Duplicator <= 1.2.32 - Cross-Site Scripting
-  author: topscoder
-  severity: high
-  description: >
-    
+  name: Duplicator – WordPress Migration & Backup Plugin Detection
+  author: ricardomaia
+  severity: info
   reference:
-    - https://github.com/topscoder/nuclei-wordfence-cve
-    - https://www.wordfence.com/threat-intel/vulnerabilities/id/010ce1c3-dd07-4ed6-8908-0909c0842be8?source=api-scan
-  classification:
-    cvss-metrics: 
-    cvss-score: 
-    cve-id: 
+    - https://wordpress.org/plugins/duplicator/
   metadata:
-    fofa-query: "wp-content/plugins/duplicator/"
-    google-query: inurl:"/wp-content/plugins/duplicator/"
-    shodan-query: 'vuln:'
-  tags: cve,wordpress,wp-plugin,duplicator,high
+    plugin_namespace: duplicator
+    wpscan: https://wpscan.com/plugin/duplicator
+  tags: tech,wordpress,wp-plugin,top-100,top-200
 
 http:
   - method: GET
-    redirects: true
-    max-redirects: 3
+
     path:
       - "{{BaseURL}}/wp-content/plugins/duplicator/readme.txt"
 
+    payloads:
+      last_version: helpers/wordpress/plugins/duplicator.txt
+
     extractors:
       - type: regex
-        name: version
         part: body
-        group: 1
         internal: true
+        name: internal_detected_version
+        group: 1
         regex:
-          - "(?mi)Stable tag: ([0-9.]+)"
+          - '(?i)Stable.tag:\s?([\w.]+)'
 
       - type: regex
-        name: version
         part: body
+        name: detected_version
         group: 1
         regex:
-          - "(?mi)Stable tag: ([0-9.]+)"
+          - '(?i)Stable.tag:\s?([\w.]+)'
 
-    matchers-condition: and
+    matchers-condition: or
     matchers:
-      - type: status
-        status:
-          - 200
-
-      - type: word
-        words:
-          - "duplicator"
-        part: body
-
       - type: dsl
+        name: "outdated_version"
         dsl:
-          - compare_versions(version, '<= 1.2.32')
+          - compare_versions(internal_detected_version, concat("< ", last_version))
+
+      - type: regex
+        part: body
+        regex:
+          - '(?i)Stable.tag:\s?([\w.]+)'

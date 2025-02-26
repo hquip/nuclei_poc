@@ -16,7 +16,7 @@ info:
     verified: true
   tags: cve,cve2022,xss,eris
 
-http:
+requests:
   - raw:
       - |
         POST /index.php?q=result&searchfor=advancesearch HTTP/1.1

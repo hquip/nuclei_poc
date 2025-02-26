@@ -9,10 +9,13 @@ info:
     cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:L
     cvss-score: 8.3
     cwe-id: CWE-522
+    cpe: cpe:2.3:a:sap:hybris:*:*:*:*:*:*:*:*
   metadata:
     verified: true
     max-request: 3
     shodan-query: title:"Hybris"
+    product: hybris
+    vendor: sap
   tags: default-login,hybris
 
 http:
@@ -38,7 +41,6 @@ http:
         - admin
       password:
         - nimda
-    cookie-reuse: true
 
     matchers-condition: and
     matchers:
@@ -60,5 +62,4 @@ http:
         group: 1
         regex:
           - '<meta name="_csrf" content="([a-z0-9-]+)" \/>'
-
-# digest: 4b0a00483046022100b91adeee4e4a156289694d7239b9d18e9020d6e7c2dfb5b5de80c183d2ad1f0d0221009b3b5ca16729a3aa4f8268a6795b084555aebf04f21b8ad07a6e5ddc763e7f73:922c64590222798bb761d5b6d8e72950
+# digest: 490a004630440220705064ae9dc25d4fe3e47b9e434e3975c6a8125091d1fbff4393082ce7c818ed022031b0cc83879c3a7ab2f417d27c5201cb15c0d85a8552dc40ba7361cb1d174cec:922c64590222798bb761d5b6d8e72950
