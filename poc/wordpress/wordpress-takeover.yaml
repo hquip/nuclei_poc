@@ -2,24 +2,19 @@ id: wordpress-takeover
 
 info:
   name: WordPress takeover detection
-  author: pdteam,geeknik
+  author: pdcommunity & geeknik
   severity: high
-  reference:
-    - https://github.com/EdOverflow/can-i-take-over-xyz/pull/176
-    - https://hackerone.com/reports/274336
-  tags: takeover,wordpress,hackerone
+  tags: takeover,wordpress
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz
 
 requests:
   - method: GET
     path:
       - "{{BaseURL}}"
 
+    redirects: true
     matchers-condition: and
     matchers:
-      - type: dsl
-        dsl:
-          - Host != ip
-
       - type: word
         words:
           - "Do you want to register"

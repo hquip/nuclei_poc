@@ -1,20 +1,23 @@
 id: git-config
 
 info:
-  name: Git Configuration - Detect
-  author: pdteam,pikpikcu,Mah3Sec_
+  name: Git Config Disclosure
+  author: pdteam & pikpikcu
   severity: medium
-  description: Git configuration was detected via the pattern /.git/config and log file on passed URLs.
-  classification:
-    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N
-    cvss-score: 5.3
-    cwe-id: CWE-200
+  description: Searches for the pattern /.git/config on passed URLs.
   tags: config,git,exposure
 
 requests:
-  - method: GET
-    path:
-      - "{{BaseURL}}/.git/config"
+  - raw:
+      - |
+        GET /.git/config HTTP/1.1
+        Host: {{Hostname}}
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0
+        Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+        Accept-Language: en-US,en;q=0.5
+        Content-Type: application/x-www-form-urlencoded
+        Content-Length: 1
+        Connection: close
 
     matchers-condition: and
     matchers:
@@ -24,12 +27,4 @@ requests:
 
       - type: dsl
         dsl:
-          - "!contains(tolower(body), '<html')"
-          - "!contains(tolower(body), '<body')"
-        condition: and
-
-      - type: status
-        status:
-          - 200
-
-# Enhanced by md on 2023/02/09
+          - 'contains(tolower(body), "<html") == false && contains(tolower(body), "</body>") == false'

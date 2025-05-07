@@ -1,28 +1,25 @@
+# info to search signature
 id: docker-registry
-
 info:
-  name: Docker Registry Listing
-  author: puzzlepeaches
-  severity: medium
-  reference:
-    - https://notsosecure.com/anatomy-of-a-hack-docker-registry
-  tags: misconfig,docker,devops
+  name: Docker Registry Exposed
+  risk: High
 
 requests:
   - method: GET
-    path:
-      - "{{BaseURL}}/v2/_catalog"
+    redirect: false
+    url: >-
+     {{.BaseURL}}/v2/
+    detections:
+      - >-
+        StatusCode() == 200 && StringSearch("response", "registry/2.0") && StringSearch("response", "docker-distribution-api-version")
+  
+  - method: GET
+    redirect: false
+    url: >-
+     {{.BaseURL}}/v2/_catalog
+    detections:
+      - >-
+        StatusCode() == 200 && StringSearch("response", "repositories")
 
-    host-redirects: true
-    max-redirects: 1
-    matchers-condition: and
-    matchers:
-      - type: word
-        part: body
-        words:
-          - '"repositories":'
-
-      - type: word
-        part: header
-        words:
-          - "application/json"
+reference:
+  - link: http://www.polaris-lab.com/index.php/archives/253/

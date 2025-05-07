@@ -10,7 +10,6 @@ requests:
   - method: GET
     path:
       - "{{BaseURL}}/lfm.php"
-
     matchers-condition: and
     matchers:
       - type: status

@@ -1,24 +1,18 @@
 id: cargocollective-takeover
 
 info:
-  name: CargoCollective Takeover Detection
-  author: pdteam
+  name: cargocollective takeover detection
+  author: pdcommunity
   severity: high
-  reference:
-    - https://github.com/EdOverflow/can-i-take-over-xyz/issues/152
-  tags: takeover,cargocollective
+  tags: takeover
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz
 
 requests:
   - method: GET
     path:
       - "{{BaseURL}}"
 
-    matchers-condition: and
     matchers:
-      - type: dsl
-        dsl:
-          - Host != ip
-
       - type: word
         words:
           - '<div class="notfound">'
