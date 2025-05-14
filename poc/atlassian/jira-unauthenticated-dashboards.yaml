@@ -6,8 +6,7 @@ id: jira-unauthenticated-dashboards
 info:
   name: Jira Unauthenticated Dashboards
   author: TechbrunchFR
-  severity: info
-  tags: atlassian,jira
+  severity: Info
 
 requests:
   - method: GET
