@@ -4,9 +4,8 @@ info:
   name: ghost takeover detection
   author: pdteam
   severity: high
-  reference:
-    - https://github.com/EdOverflow/can-i-take-over-xyz/issues/89
   tags: takeover,ghost
+  reference: https://github.com/EdOverflow/can-i-take-over-xyz/issues/89
 
 requests:
   - method: GET
@@ -15,10 +14,6 @@ requests:
 
     matchers-condition: and
     matchers:
-      - type: dsl
-        dsl:
-          - Host != ip
-
       - type: word
         part: header
         words:
