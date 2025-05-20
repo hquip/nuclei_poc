@@ -1,0 +1,30 @@
+id: hubble-detect
+
+info:
+  name: Hubble - Detect
+  author: righettod
+  severity: info
+  description: |
+    Hubble products was detected.
+  reference:
+    - https://github.com/cilium/hubble
+    - https://docs.cilium.io/en/stable/observability/hubble/
+  metadata:
+    verified: true
+    max-request: 1
+    shodan-query: http.title:"Hubble UI"
+  tags: tech,hubble,detect
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    host-redirects: true
+    matchers:
+      - type: dsl
+        dsl:
+          - 'status_code == 200'
+          - 'contains_any(to_lower(body), "<title>hubble ui enterprise", "<title>hubble ui")'
+        condition: and
+# digest: 4b0a00483046022100f4613484bce972993ddc769cf595855aa1d43c108add17eb6fa08d15ff0a9eeb022100ada00755108612853d64949043526db2aec8926083aa931625bac9a6e4d0dc22:922c64590222798bb761d5b6d8e72950

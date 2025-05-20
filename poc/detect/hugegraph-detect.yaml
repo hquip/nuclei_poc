@@ -1,0 +1,32 @@
+id: hugegraph-detect
+
+info:
+  name: HugeGraph - Detect
+  author: rxerium
+  severity: info
+  description: |
+    A huge graph technology was detected.
+  reference:
+    - https://hugegraph.apache.org/
+  metadata:
+    max-request: 1
+    verified: true
+    shodan-query: html:"https://hugegraph.github.io"
+  tags: hugegraph,tech,detect
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - '"service":"hugegraph"'
+
+      - type: status
+        status:
+          - 200
+# digest: 4b0a00483046022100dde00833cb4aa06f4941886a093ae4b1d36ec027fd90ddc88565f34881ff5c43022100d6df78d8cf1ec7f4c387b00331f2d53e739e05715b4c5566075b049401453b14:922c64590222798bb761d5b6d8e72950
