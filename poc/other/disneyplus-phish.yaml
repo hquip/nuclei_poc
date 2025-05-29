@@ -8,8 +8,9 @@ info:
     A disneyplus phishing website was detected
   reference:
     - https://disneyplus.com
+  metadata:
+    max-request: 1
   tags: phishing,disneyplus,osint
-
 http:
   - method: GET
     path:
@@ -31,4 +32,4 @@ http:
       - type: dsl
         dsl:
           - '!contains(host,"disneyplus.com")'
-# digest: 490a004630440220127ca83ac9f4ddf66ddaa72c60e2a04a4f408cbcd1bf04a0c56487ad3926c234022042ac0ed35bf1dc9f7e9ff96e8da5d669313b6ce66cca72dbded1122b32f7aa10:922c64590222798bb761d5b6d8e72950
+# digest: 4a0a00473045022100d2a6bbec3107a53a85777b4907211a95361a8eff7bb33b6b8fd3c16a8a33c82302200877877ef6bd5ff4e387982b796f8a0b65ce9e659ed252fa91f4b80b9ff79109:922c64590222798bb761d5b6d8e72950
