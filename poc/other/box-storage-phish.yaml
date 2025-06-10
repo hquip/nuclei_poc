@@ -8,9 +8,8 @@ info:
     A box phishing website was detected
   reference:
     - https://box.com
-  metadata:
-    max-request: 1
   tags: phishing,box-storage,osint
+
 http:
   - method: GET
     path:
@@ -32,4 +31,4 @@ http:
       - type: dsl
         dsl:
           - '!contains(host,"box.com")'
-# digest: 4a0a00473045022100e6e55ddab0e6c617a34a939b177ed4d7306fd0a7c17273517570b765ce0ccf820220204be1871055aa928a1352d90a385a65901f5e1b3de38a618f05cd155917cff8:922c64590222798bb761d5b6d8e72950
+# digest: 4a0a00473045022100ff30c7c759c08e3c7fc8de8eb392a7c6c0a89ef1de44057d362c4dbffab804d1022003696a29361723448ac99734497456fd8004897430980d393e35299ef82e785c:922c64590222798bb761d5b6d8e72950

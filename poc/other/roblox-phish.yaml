@@ -8,9 +8,8 @@ info:
     A roblox phishing website was detected
   reference:
     - https://roblox.com
-  metadata:
-    max-request: 1
   tags: phishing,roblox,osint
+
 http:
   - method: GET
     path:
@@ -32,4 +31,4 @@ http:
       - type: dsl
         dsl:
           - '!contains(host,"roblox.com")'
-# digest: 490a00463044022026d6b927dff30056c9c8d645a8b37d47d9a81188cec49e3e918d3729e1955a0d02201771118786f80d1e9175853ea9a8235b16c7f136389d889ccdf1a42d4361c2b7:922c64590222798bb761d5b6d8e72950
+# digest: 4a0a0047304502202c51b9fbc6b80831a76f9b598e2f8b4291a3bbba6f9fdde75f9856d96241496e0221009a1780825c553195d6e10d81bec4253ff8ad5423e69879580a57b670a88c0148:922c64590222798bb761d5b6d8e72950
