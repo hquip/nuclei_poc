@@ -4,20 +4,14 @@ info:
   name: MongoDB Ops Manager
   author: dhiyaneshDK
   severity: info
-  metadata:
-    shodan-query: http.title:"MongoDB Ops Manager"
-  tags: panel,mongodb
+  verified: true
+  reference:
+    - https://www.shodan.io/search?query=http.title%3A%22MongoDB+Ops+Manager%22
 
-requests:
-  - method: GET
-    path:
-      - '{{BaseURL}}/account/login'
-
-    matchers-condition: and
-    matchers:
-      - type: word
-        words:
-          - 'MongoDB Ops Manager</title>'
-      - type: status
-        status:
-          - 200
+rules:
+  r0:
+    request:
+      method: GET
+      path: /account/login
+    expression: response.status == 200 && response.body.bcontains(b'MongoDB Ops Manager</title>')
+expression: r0()
