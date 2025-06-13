@@ -4,14 +4,21 @@ info:
   name: MinIO Browser
   author: pikpikcu
   severity: info
-  verified: true
-  description: |
+  metadata:
     shodan-query: title:"MinIO Browser"
+  tags: panel,minio
 
-rules:
-  r0:
-    request:
-      method: GET
-      path: /minio/login
-    expression: response.status == 200 && response.body.ibcontains(b'<title>minio browser</title>')
-expression: r0()
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/minio/login"
+
+    matchers-condition: and
+    matchers:
+      - type: dsl
+        dsl:
+          - "contains(tolower(body), '<title>minio browser</title>')"
+
+      - type: status
+        status:
+          - 200

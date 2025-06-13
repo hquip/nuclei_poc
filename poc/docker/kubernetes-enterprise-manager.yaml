@@ -1,17 +1,25 @@
 id: kubernetes-enterprise-manager
 
 info:
-  name: Kubernetes Enterprise Manager Detect
+  name: Detect Kubernetes Enterprise Manager
   author: pussycat0x
   severity: info
-  verified: false
-  description: |
+  metadata:
     fofa-query: app="Kubernetes-Enterprise-Manager"
+  tags: tech,kubernetes
 
-rules:
-    r0:
-        request:
-            method: GET
-            path: /metrics
-        expression: response.status == 200 && response.body.bcontains(b"Kubernetes Enterprise Manager")
-expression: r0() 
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "Kubernetes Enterprise Manager"
+
+      - type: status
+        status:
+          - 200
