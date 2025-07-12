@@ -1,19 +1,21 @@
 id: jenkins-login
 
 info:
-  name: Jenkins Login Detected
+  name: Jenkins Login
   author: pdteam
   severity: info
-  verified: true
-  description: Jenkins is an open source automation server.
-  reference:
-    - https://www.jenkins.io/doc/book/security/
+  tags: panel,jenkins
 
-rules:
-    r0:
-        request:
-            method: GET
-            path: /login
-        expression: |
-          response.status == 200 && response.body.bcontains(b'Sign in [Jenkins]')
-expression: r0()
+requests:
+  - method: GET
+    path:
+      - '{{BaseURL}}/login'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - 'Sign in [Jenkins]'
+      - type: status
+        status:
+          - 200

@@ -3,15 +3,19 @@ id: kubernetes-version
 info:
   name: Kubernetes Version Exposure
   author: raesene
-  severity: info
-  verified: true
   description: Searches for exposed Kubernetes API servers which return version information unauthenticated
+  severity: info
+  tags: tech,k8s,kubernetes,devops
 
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/version"
 
-rules:
-    r0:
-        request:
-            method: GET
-            path: /version
-        expression: response.status == 200 && response.body.bcontains(b"gitVersion") && response.body.bcontains(b"goVersion") && response.body.bcontains(b"platform")
-expression: r0() 
+    matchers:
+      - type: word
+        words:
+          - "gitVersion"
+          - "goVersion"
+          - "platform"
+        condition: and

