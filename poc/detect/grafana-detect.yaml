@@ -1,16 +1,15 @@
-id: grafana-detect
+id: grafana-panel
 
 info:
-  name: Grafana panel detect
+  name: Grafana Panel
   author: organiccrap
   severity: info
+  verified: true
 
-requests:
-  - method: GET
-    path:
-      - "{{BaseURL}}/login"
-    matchers:
-      - type: word
-        words:
-          - "<title>Grafana</title>"
-        part: body
+rules:
+  r0:
+    request:
+      method: GET
+      path: /login
+    expression: response.status == 200 && response.body.bcontains(b'<title>Grafana</title>')
+expression: r0()

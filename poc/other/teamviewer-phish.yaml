@@ -8,8 +8,9 @@ info:
     A teamviewer phishing website was detected
   reference:
     - https://teamviewer.com
+  metadata:
+    max-request: 1
   tags: phishing,teamviewer,osint
-
 http:
   - method: GET
     path:
@@ -31,4 +32,4 @@ http:
       - type: dsl
         dsl:
           - '!contains(host,"teamviewer.com")'
-# digest: 4a0a00473045022022163fef635951a4621d8eb417ca5b1f1453a1a64e8dcab5856caf402174a238022100c831d734ff319a6d7d8556631ef71e319ee184be007e92a8088861a68e6455cb:922c64590222798bb761d5b6d8e72950
+# digest: 4a0a00473045022100f253a586bb9c0567c65b20921ed378e129692106914a78f22ae3b21aa2030fc502201124cc6b6f6980cc6e58cb898d9a2cdd551a69094057da5d61252be1ec25a29c:922c64590222798bb761d5b6d8e72950

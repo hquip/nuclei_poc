@@ -8,8 +8,9 @@ info:
     A brave phishing website was detected
   reference:
     - https://brave.com
+  metadata:
+    max-request: 1
   tags: phishing,brave,osint
-
 http:
   - method: GET
     path:
@@ -31,4 +32,4 @@ http:
       - type: dsl
         dsl:
           - '!contains(host,"brave.com")'
-# digest: 490a004630440220722f6c2912d5de0043c27d7fb6554fe206444966c815296c93bec7125c5042ab02202f8de725e717b45145f235b110eaf722331ae1066544533a8da169b5ad680c8c:922c64590222798bb761d5b6d8e72950
+# digest: 490a0046304402202aae6fbff00dd98eb0029ab8f6b7440d7d93ef693a1d5be514aa8751d82351ea02205b6707e7fcc341e8438b11b867f9346471a2707b97d74acec27776e88d2d3d5d:922c64590222798bb761d5b6d8e72950

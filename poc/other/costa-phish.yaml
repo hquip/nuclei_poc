@@ -8,8 +8,9 @@ info:
     A costa phishing website was detected
   reference:
     - https://costa.co.uk
+  metadata:
+    max-request: 1
   tags: phishing,costa,osint
-
 http:
   - method: GET
     path:
@@ -31,4 +32,4 @@ http:
       - type: dsl
         dsl:
           - '!contains(host,"costa.co.uk")'
-# digest: 4a0a00473045022100d5d92b1e3ab10e81dc931696d670c48d2bbc541c828b72d6df85b65f19895cbe0220275bd11c8be045a5e16fd6da8eba75a696dd035560c732a23573018b0d612698:922c64590222798bb761d5b6d8e72950
+# digest: 4a0a004730450220187053da3c6fc663262d85c3d427b2266981a63ca9aa8c37030807cf6220df50022100af955e1e44d1cf50b3bcb39a1c3f888125ae05e4ac66f5259f5ef1f080d3235d:922c64590222798bb761d5b6d8e72950
