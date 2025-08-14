@@ -1,0 +1,38 @@
+id: roboform-phish
+
+info:
+  name: roboform phishing Detection
+  author: rxerium
+  severity: info
+  description: |
+    A roboform phishing website was detected
+  reference:
+    - https://roboform.com
+  metadata:
+    max-request: 1
+  tags: phishing,roboform,osint
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    host-redirects: true
+    max-redirects: 2
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - 'Best Password Manager: No more writing down passwords'
+          - 'Multi-platform secure solution to simplify your online experience. One click login on Chrome, Firefox, Safari, IE, Opera, Edge, Windows, Mac, iOS, Android.'
+          - 'roboform'
+        condition: and
+
+      - type: status
+        status:
+          - 200
+
+      - type: dsl
+        dsl:
+          - '!contains(host,"roboform.com")'
+# digest: 4b0a004830460221009f6967591ac64ddecba6f1c6820f0e53a75baf0c3c2ca4869e47a466c94f3048022100985fbae944e819385645944e16be169be112b3caa6d238b402b3be677e3f737b:922c64590222798bb761d5b6d8e72950
