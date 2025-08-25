@@ -1,0 +1,35 @@
+id: pcloud-phish
+
+info:
+  name: pcloud phishing Detection
+  author: rxerium
+  severity: info
+  description: |
+    A pcloud phishing website was detected
+  reference:
+    - https://pcloud.com
+  metadata:
+    max-request: 1
+  tags: phishing,pcloud,osint
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    host-redirects: true
+    max-redirects: 2
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "pCloud - Europe's Most Secure Cloud Storage"
+
+      - type: status
+        status:
+          - 200
+
+      - type: dsl
+        dsl:
+          - '!contains(host,"pcloud.com")'
+# digest: 4b0a00483046022100cfcbddf94314694188d0cfbf9ab1ca3e9c31af23ea4abeb58af26fa0ee4e4a3a0221009f87f1ac596e361aa4e1ea0fb574fd4ec2dd0afcbdb07ff883369f6bd8caa0ac:922c64590222798bb761d5b6d8e72950
