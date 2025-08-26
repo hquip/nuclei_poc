@@ -1,0 +1,38 @@
+id: python-phish
+
+info:
+  name: python phishing Detection
+  author: rxerium
+  severity: info
+  description: |
+    A python phishing website was detected
+  reference:
+    - https://python.org
+  metadata:
+    max-request: 1
+  tags: phishing,python,osint
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    host-redirects: true
+    max-redirects: 2
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - 'Welcome to Python.org'
+          - 'The official home of the Python Programming Language'
+        condition: and
+
+
+      - type: status
+        status:
+          - 200
+
+      - type: dsl
+        dsl:
+          - '!contains(host,"python.org")'
+# digest: 490a0046304402202f02c9451b2b1e7017c9e01dcd0710952e3d2f7d6190e7d2d04b273aabfe220802207fd9db49c10ae64b05c9d020fae3bf37e039d15ec4ab14b0179ccf6266d17c42:922c64590222798bb761d5b6d8e72950
