@@ -13,11 +13,12 @@ info:
 
 requests:
   - method: GET
+
     path:
       - "{{BaseURL}}/wp-content/plugins/w3-total-cache/readme.txt"
 
     payloads:
-      last_version: helpers/wordpress/plugins/w3-total-cache.txt
+      last_version: ../../../helpers/wordpress/plugins/w3-total-cache.txt
 
     extractors:
       - type: regex

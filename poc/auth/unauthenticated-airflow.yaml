@@ -5,10 +5,11 @@ info:
   author: dhiyaneshDK
   severity: high
   metadata:
+    max-request: 2
     shodan-query: title:"Airflow - DAGs"
   tags: apache,airflow,unauth
 
-requests:
+http:
   - method: GET
     path:
       - "{{BaseURL}}"

@@ -4,9 +4,7 @@ info:
   name: circleci config.yml exposure
   author: geeknik
   severity: low
-  reference:
-    - https://circleci.com/docs/2.0/sample-config/
-  tags: config,exposure,circleci
+  reference: https://circleci.com/docs/2.0/sample-config/
 
 requests:
   - method: GET
@@ -19,7 +17,7 @@ requests:
     matchers:
       - type: dsl
         dsl:
-          - 'regex("^version: ", body) && contains(body, "jobs:")'
+          - 'regex("^version: ", body) && contains(body, "jobs:") == true'
 
       - type: status
         status:

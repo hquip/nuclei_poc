@@ -11,7 +11,7 @@ requests:
     path:
       - "{{BaseURL}}"
 
-    redirects: true
+    host-redirects: true
     max-redirects: 2
     matchers-condition: or
     matchers:
@@ -98,6 +98,14 @@ requests:
         name: directadmin
         regex:
           - <a[^>]+>DirectAdmin</a> Web Control Panel
+        condition: or
+        part: body
+
+      - type: regex
+        name: xenforo
+        regex:
+          - (?:jQuery\.extend\(true, XenForo|Forum software by XenForo™|<!--XF:branding|<html[^>]+id="XenForo")
+          - '<html id="XF" '
         condition: or
         part: body
 
@@ -2224,6 +2232,16 @@ requests:
         part: body
 
       - type: regex
+        name: bootstrap
+        regex:
+          - <style>/\*!\* Bootstrap v(\d\.\d\.\d)
+          - <link[^>]+?href=[^"]/css/([\d.]+)/bootstrap\.(?:min\.)?css
+          - <link[^>]+?href="[^"]*bootstrap(?:\.min)?\.css
+          - <div[^>]+class="[^"]*glyphicon glyphicon-
+        condition: or
+        part: body
+
+      - type: regex
         name: combeenation
         regex:
           - <iframe[^>]+src="[^>]+portal\.combeenation\.com
@@ -2764,6 +2782,13 @@ requests:
         regex:
           - <div[^>]+id="dokuwiki__>
           - <a[^>]+href="#dokuwiki__
+        condition: or
+        part: body
+
+      - type: regex
+        name: jquery-pjax
+        regex:
+          - <div[^>]+data-pjax-container
         condition: or
         part: body
 
@@ -3376,6 +3401,14 @@ requests:
         part: header
 
       - type: word
+        name: new_laravel
+        words:
+          - "Set-Cookie: {{DN}}_session="
+          - "Set-Cookie: XSRF-TOKEN="
+        condition: and
+        part: header
+
+      - type: word
         name: express
         words:
           - "X-Powered-By: Express"
@@ -3644,3 +3677,27 @@ requests:
           - "<!-- BEGIN PAN_FORM_CONTENT -->"
           - "js/pan/"
         condition: and
+
+      - type: word
+        name: sailsjs
+        part: header
+        words:
+          - "X-Powered-By: Sails"
+
+      - type: word
+        name: tengine
+        part: server
+        words:
+          - "Tengine"
+
+      - type: word
+        name: tornado
+        part: header
+        words:
+          - "TornadoServer/"
+
+      - type: word
+        name: uvicorn
+        part: server
+        words:
+          - "uvicorn"

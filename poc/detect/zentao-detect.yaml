@@ -1,15 +1,33 @@
 id: zentao-detect
 
 info:
-  name: Zentao detect
+  name: Zentao Panel - Detect
   author: pikpikcu
   severity: info
-  verified: true
+  description: Zentao panel was detected.
+  classification:
+    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
+    cwe-id: CWE-200
+  tags: panel
 
-rules:
-  r0:
-    request:
-      method: GET
-      path: /zentao/index.php?mode=getconfig
-    expression: response.status == 200 && response.body.bcontains(b'"sessionName":"zentaosid"') && response.body.bcontains(b'{"version":"') && "\"version\":\"([v0-9.]+)\"".bmatches(response.body)
-expression: r0()
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/zentao/index.php?mode=getconfig"
+    matchers:
+      - type: word
+        words:
+          - '"sessionName":"zentaosid"'
+          - '{"version":"'
+        part: body
+        condition: and
+
+    extractors:
+      - type: regex
+        part: body
+        group: 1
+        regex:
+          - '"version":"([v0-9.]+)"'
+
+# Enhanced by md on 2023/01/26

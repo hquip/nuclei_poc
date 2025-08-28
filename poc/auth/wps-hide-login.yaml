@@ -13,11 +13,12 @@ info:
 
 requests:
   - method: GET
+
     path:
       - "{{BaseURL}}/wp-content/plugins/wps-hide-login/readme.txt"
 
     payloads:
-      last_version: helpers/wordpress/plugins/wps-hide-login.txt
+      last_version: ../../../helpers/wordpress/plugins/wps-hide-login.txt
 
     extractors:
       - type: regex

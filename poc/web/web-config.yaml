@@ -1,15 +1,13 @@
 id: web-config
 
-info:
-  name: Web Config file
-  author: Yash Anand @yashanand155
-  severity: info
-  tags: config,exposure
+name: Web Config file
+severity: info
+  
+requests:
+  - method: GET
+    paths:
+      - 'HOSTNAME/web.config'
 
-rules:
-  r0:
-    request:
-      method: GET
-      path: /web.config
-    expression: response.status == 200 && response.body.bcontains(b'<configuration>') && response.body.bcontains(b'<system.webServer>')
-expression: r0()
+    patterns:
+      - <configuration>
+      - <system.webServer>

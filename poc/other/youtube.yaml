@@ -1,27 +1,33 @@
-id: extract-youtube-links
+id: youtube
 
 info:
-  name: YouTube links extractor
-  author: cipher387
+  name: YouTube
+  author: dwisiswant0
+  description: This OSINT template looks for information about a user name.
   severity: info
-  description: Extract YouTube links from web page body
-  tags: osint,juicy-info
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
+    cvss-score: 0.0
+    cwe-id: CWE-200
+  tags: osint,osint-video,youtube
 
+self-contained: true
 requests:
   - method: GET
     path:
-      - "{{BaseURL}}"
+      - "https://www.youtube.com/c/{{user}}/about"
+      - "https://www.youtube.com/user/{{user}}/about"
+      - "https://www.youtube.com/@{{user}}"
 
+    matchers-condition: and
     matchers:
-      - type: regex
-        part: body
-        regex:
-          - 'youtube.com/((.|\n)*?)(\s|\"|\]|\,)'
-    extractors:
-      - type: regex
-        part: body
-        regex:
-          - 'youtube.com/((.|\n)*?)(\s|\"|\]|\,)'
+      - type: status
+        status:
+          - 200
 
-
-#url for test https://www.europarl.europa.eu/portal/en/contact 
+      - type: word
+        part: body
+        words:
+          - "joinedDateText"
+          - "canonicalBaseUrl"
+        condition: or
