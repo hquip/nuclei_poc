@@ -3,7 +3,8 @@ name: CISA KEV
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 6,15 * * 1,2,3,4,5'
+    - cron: '0 6,15 * * 1,2,3,4,5'  # KEV updates: Twice daily on weekdays
+    - cron: '0 3 * * 0'              # PoC data: Weekly on Sunday at 3 AM UTC
 
 jobs:
   CISA-KEV:
@@ -19,30 +20,42 @@ jobs:
 
     - name: CISA KEV
       run: |
-        mv cisa-kev.csv cisa-kev-old.csv
-        curl --silent --output cisa-kev.csv https://www.cisa.gov/sites/default/files/csv/known_exploited_vulnerabilities.csv
-        echo "cisaOldVAR=$(cisa-kev-old.csv | wc -l)" >> $GITHUB_ENV
-        echo "cisaNewVAR=$(cisa-kev.csv | wc -l)" >> $GITHUB_ENV
+        mv data/raw/cisa-kev.csv data/raw/cisa-kev-old.csv
+        curl --silent --output data/raw/cisa-kev.csv https://www.cisa.gov/sites/default/files/csv/known_exploited_vulnerabilities.csv
+        echo "cisaOldVAR=$(data/raw/cisa-kev-old.csv | wc -l)" >> $GITHUB_ENV
+        echo "cisaNewVAR=$(data/raw/cisa-kev.csv | wc -l)" >> $GITHUB_ENV
         echo "differenceVAR=$(( $cisaOldVAR - $cisaNewVAR ))" >> $GITHUB_ENV
-        rm cisa-kev-old.csv
+        rm data/raw/cisa-kev-old.csv
 
     - name: Fetch CVEs from Nuclei
       run: |
         git clone https://github.com/projectdiscovery/nuclei-templates.git
-        find . -type f -name '*CVE-*' -exec basename {} \; > NucleiList.txt
-        sed -i 's/.yaml//g' NucleiList.txt
-        sort -u NucleiList.txt -o NucleiList.txt
+        find . -type f -name '*CVE-*' -exec basename {} \; > data/lists/NucleiList.txt
+        sed -i 's/.yaml//g' data/lists/NucleiList.txt
+        sort -u data/lists/NucleiList.txt -o data/lists/NucleiList.txt
 
 
     - name: Check for Nuclei and CISA KEV matches
       run: |
-           grep -wof NucleiList.txt cisa-kev.csv | sort | uniq > CISA-Scannable-List.txt
-  
+           grep -wof data/lists/NucleiList.txt data/raw/cisa-kev.csv | sort | uniq > data/lists/CISA-Scannable-List.txt
+
+
+    - name: Fetch PoC data from ProjectDiscovery API
+      # Only run PoC collection on Sundays (weekly update)
+      if: github.event.schedule == '0 3 * * 0' || github.event_name == 'workflow_dispatch'
+      run: |
+           echo "🔍 Fetching PoC availability data from ProjectDiscovery API (weekly update)..."
+           python scripts/fetch_poc_data.py || echo "⚠️  PoC data fetch failed, continuing without PoC data"
 
     - name: Declare VARs
       run: |
-           echo "totalVAR=$(($(wc -l < cisa-kev.csv) - 1))" >> $GITHUB_ENV
-           echo "nucleiVAR=$(wc -l < CISA-Scannable-List.txt)" >> $GITHUB_ENV
+           echo "totalVAR=$(($(wc -l < data/raw/cisa-kev.csv) - 1))" >> $GITHUB_ENV
+           echo "nucleiVAR=$(wc -l < data/lists/CISA-Scannable-List.txt)" >> $GITHUB_ENV
+           if [ -f data/lists/CISA-POC-List.txt ]; then
+             echo "pocVAR=$(wc -l < data/lists/CISA-POC-List.txt)" >> $GITHUB_ENV
+           else
+             echo "pocVAR=0" >> $GITHUB_ENV
+           fi
            
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -52,7 +65,7 @@ jobs:
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pandas matplotlib seaborn numpy
+        pip install pandas matplotlib seaborn numpy requests
     
     - name: Generate comprehensive statistics
       run: |
@@ -78,6 +91,7 @@ jobs:
          echo "Total Vulnerabilities: ${{ env.totalVAR }}"
          echo "New vulnerabilities added: ${{ env.differenceVAR }}"
          echo "CISA Scannable list: ${{ env.nucleiVAR }}"
+         echo "CVEs with public PoCs: ${{ env.pocVAR }}"
 
     - name: Slack Notification
       if: env.differenceVAR > 0
@@ -85,13 +99,13 @@ jobs:
       with:
           payload: |
            {
-            "text": "📈 *CISA's KEV has been updated!*\n\n New vulnerabilities added: `${{ env.differenceVAR }}`\nTotal Vulnerabilities: `${{ env.totalVAR }}`\nCISA Scannable list: `${{ env.nucleiVAR }}`",
+            "text": "📈 *CISA's KEV has been updated!*\n\n New vulnerabilities added: `${{ env.differenceVAR }}`\nTotal Vulnerabilities: `${{ env.totalVAR }}`\nCISA Scannable list: `${{ env.nucleiVAR }}`\n💣 With public PoCs: `${{ env.pocVAR }}`",
             "blocks": [
              {
                "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                 "text": "📈 *CISA's KEV has been updated!*\n\n New vulnerabilities added: `${{ env.differenceVAR }}`\nTotal Vulnerabilities: `${{ env.totalVAR }}`\nCISA Scannable list: `${{ env.nucleiVAR }}`"
+                 "text": "📈 *CISA's KEV has been updated!*\n\n New vulnerabilities added: `${{ env.differenceVAR }}`\nTotal Vulnerabilities: `${{ env.totalVAR }}`\nCISA Scannable list: `${{ env.nucleiVAR }}`\n💣 With public PoCs: `${{ env.pocVAR }}`"
                 }
              }
             ]
