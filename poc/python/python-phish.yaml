@@ -8,9 +8,8 @@ info:
     A python phishing website was detected
   reference:
     - https://python.org
-  metadata:
-    max-request: 1
   tags: phishing,python,osint
+
 http:
   - method: GET
     path:
@@ -35,4 +34,4 @@ http:
       - type: dsl
         dsl:
           - '!contains(host,"python.org")'
-# digest: 490a0046304402201cfa9310109295cff4f16b82615983ee63ad85a3a288b9f1da41488c6f56b93602206c3222567b36c56a2ea08746c751159f953f94dc0d4fac3fed8fc877186f07d1:922c64590222798bb761d5b6d8e72950
+# digest: 4b0a0048304602210088268eb6207dbad9eb3cce7d95625b6acff15310851772e251bc1113f55b7820022100bd99db13f0adc57c4ad6764baef2f1b7262588d9bd5e0990d4273f7bef7c3ffa:922c64590222798bb761d5b6d8e72950

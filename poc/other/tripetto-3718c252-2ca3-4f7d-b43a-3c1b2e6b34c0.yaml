@@ -2,7 +2,7 @@ id: tripetto-3718c252-2ca3-4f7d-b43a-3c1b2e6b34c0
 
 info:
   name: >
-    Tripetto <= 8.0.11 - Unauthentiated Stored Cross-Site Scripting via Form File Upload
+    Tripetto <= 8.0.6 - Unauthentiated Stored Cross-Site Scripting via Form File Upload
   author: topscoder
   severity: high
   description: >
@@ -32,8 +32,16 @@ http:
         name: version
         part: body
         group: 1
+        internal: true
         regex:
-          - "(?mi)Stable tag:\\s*([0-9.]+)"
+          - "(?mi)Stable tag: ([0-9.]+)"
+
+      - type: regex
+        name: version
+        part: body
+        group: 1
+        regex:
+          - "(?mi)Stable tag: ([0-9.]+)"
 
     matchers-condition: and
     matchers:
@@ -48,4 +56,4 @@ http:
 
       - type: dsl
         dsl:
-          - compare_versions(version, '<= 8.0.11')
+          - compare_versions(version, '<= 8.0.6')
