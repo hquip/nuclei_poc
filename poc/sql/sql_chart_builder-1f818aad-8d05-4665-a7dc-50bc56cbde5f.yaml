@@ -2,7 +2,7 @@ id: sql_chart_builder-1f818aad-8d05-4665-a7dc-50bc56cbde5f
 
 info:
   name: >
-    SQL Chart Builder <= 2.3.7.1 - Authenticated (Contributor+) SQL Injection
+    SQL Chart Builder <= 2.3.6 - Authenticated (Contributor+) SQL Injection
   author: topscoder
   severity: low
   description: >
@@ -32,16 +32,8 @@ http:
         name: version
         part: body
         group: 1
-        internal: true
         regex:
-          - "(?mi)Stable tag: ([0-9.]+)"
-
-      - type: regex
-        name: version
-        part: body
-        group: 1
-        regex:
-          - "(?mi)Stable tag: ([0-9.]+)"
+          - "(?mi)Stable tag:\\s*([0-9.]+)"
 
     matchers-condition: and
     matchers:
@@ -56,4 +48,4 @@ http:
 
       - type: dsl
         dsl:
-          - compare_versions(version, '<= 2.3.7.1')
+          - compare_versions(version, '<= 2.3.6')

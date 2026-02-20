@@ -2,7 +2,7 @@ id: wedevs_project_manager-c093ed6a-0f3d-4ad9-a57c-cec1c2e7bd8e
 
 info:
   name: >
-    WP Project Manager <= 2.6.16 - Authenticated (Project Manager+) SQL Injection
+    WP Project Manager <= 2.6.26 - Authenticated (Project Manager+) SQL Injection
   author: topscoder
   severity: low
   description: >
@@ -32,16 +32,8 @@ http:
         name: version
         part: body
         group: 1
-        internal: true
         regex:
-          - "(?mi)Stable tag: ([0-9.]+)"
-
-      - type: regex
-        name: version
-        part: body
-        group: 1
-        regex:
-          - "(?mi)Stable tag: ([0-9.]+)"
+          - "(?mi)Stable tag:\\s*([0-9.]+)"
 
     matchers-condition: and
     matchers:
@@ -56,4 +48,4 @@ http:
 
       - type: dsl
         dsl:
-          - compare_versions(version, '<= 2.6.16')
+          - compare_versions(version, '<= 2.6.26')
