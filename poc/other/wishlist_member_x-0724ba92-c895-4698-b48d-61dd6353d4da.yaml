@@ -2,7 +2,7 @@ id: wishlist_member_x-0724ba92-c895-4698-b48d-61dd6353d4da
 
 info:
   name: >
-    WishList Member X <= 3.25.1 - Unauthenticated Denial of Service
+    WishList Member X < 3.26.7 - Unauthenticated Denial of Service
   author: topscoder
   severity: low
   description: >
@@ -48,4 +48,4 @@ http:
 
       - type: dsl
         dsl:
-          - compare_versions(version, '<= 3.25.1')
+          - compare_versions(version, '< 3.26.7')

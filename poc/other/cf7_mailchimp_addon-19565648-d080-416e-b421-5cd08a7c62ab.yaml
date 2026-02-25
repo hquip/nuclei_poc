@@ -2,7 +2,7 @@ id: cf7_mailchimp_addon-19565648-d080-416e-b421-5cd08a7c62ab
 
 info:
   name: >
-    CF7 7 Mailchimp Add-on <= 2.2 - Missing Authorization
+    CF7 7 Mailchimp Add-on < 2.4 - Missing Authorization
   author: topscoder
   severity: high
   description: >
@@ -48,4 +48,4 @@ http:
 
       - type: dsl
         dsl:
-          - compare_versions(version, '<= 2.2')
+          - compare_versions(version, '< 2.4')
