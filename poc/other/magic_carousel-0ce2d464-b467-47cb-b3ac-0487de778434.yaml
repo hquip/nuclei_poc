@@ -2,7 +2,7 @@ id: magic_carousel-0ce2d464-b467-47cb-b3ac-0487de778434
 
 info:
   name: >
-    Magic Responsive Slider and Carousel WordPress <= 1.6 - Authenticated (Contributor+) SQL Injection
+    Magic Responsive Slider and Carousel WordPress <= 1.4 - Authenticated (Contributor+) SQL Injection
   author: topscoder
   severity: low
   description: >
@@ -32,8 +32,16 @@ http:
         name: version
         part: body
         group: 1
+        internal: true
         regex:
-          - "(?mi)Stable tag:\\s*([0-9.]+)"
+          - "(?mi)Stable tag: ([0-9.]+)"
+
+      - type: regex
+        name: version
+        part: body
+        group: 1
+        regex:
+          - "(?mi)Stable tag: ([0-9.]+)"
 
     matchers-condition: and
     matchers:
@@ -48,4 +56,4 @@ http:
 
       - type: dsl
         dsl:
-          - compare_versions(version, '< 1.6')
+          - compare_versions(version, '<= 1.4')
