@@ -2,7 +2,7 @@ id: woocommerce_wholesale_lead_capture-033e8326-38ed-4d36-8a29-06f9c8a5e808
 
 info:
   name: >
-    Woocommerce Wholesale Lead Capture <= 1.17.8 - Unauthenticated Privilege Escalation
+    Woocommerce Wholesale Lead Capture <= 2.0.3.1 - Unauthenticated Privilege Escalation
   author: topscoder
   severity: low
   description: >
@@ -48,4 +48,4 @@ http:
 
       - type: dsl
         dsl:
-          - compare_versions(version, '<= 1.17.8')
+          - compare_versions(version, '<= 2.0.3.1')
