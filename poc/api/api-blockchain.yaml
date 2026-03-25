@@ -4,14 +4,13 @@ info:
   name: Blockchain API Test
   author: daffainfo
   severity: info
+  description: Bitcoin Payment, Wallet & Transaction Data
   reference:
     - https://api.blockchain.com/v3/#/
-    - https://github.com/daffainfo/all-about-apikey/blob/main/Cryptocurrency/Blockchain.md
-  tags: token-spray,blockchain
+    - https://github.com/daffainfo/all-about-apikey/tree/main/blockchain
   classification:
-    cvss-metrics: CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N
-    cvss-score: 0.0
     cwe-id: CWE-200
+  tags: token-spray,blockchain
 
 self-contained: true
 requests:

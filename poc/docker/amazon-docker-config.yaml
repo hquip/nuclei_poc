@@ -1,4 +1,4 @@
-id: amazon-docker-config
+id: amazon-docker-config-disclosure
 
 info:
   name: Dockerrun AWS Configuration Exposure
